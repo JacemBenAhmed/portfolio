@@ -6,6 +6,79 @@
         <link rel="stylesheet" href="../assets/css/styles.css">
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
         <title>Digital Signature Solution | Jacem</title>
+        <style>
+          /* Scoped styles for this page only */
+          .sig-hero {
+            background: linear-gradient(135deg, rgba(109,40,217,0.08), rgba(139,92,246,0.08));
+            border: 1px solid rgba(109,40,217,0.12);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 8px 24px rgba(17,24,39,0.08);
+            padding: 2rem;
+            overflow: hidden;
+            position: relative;
+          }
+          .sig-hero h1 {
+            font-size: 2rem;
+            color: var(--second-color);
+            margin-bottom: 0.5rem;
+          }
+          .sig-hero p {
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 900px;
+          }
+          .sig-badges { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem; }
+          .sig-badge { background: var(--third-color); color: var(--first-color); padding:.35rem .65rem; border-radius: 999px; font-weight: var(--font-semi); font-size:.85rem; }
+
+          .sig-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+          }
+          .sig-card {
+            position: relative;
+            border-radius: 1rem;
+            border: 1px solid rgba(17,24,39,0.08);
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(17,24,39,0.08);
+            cursor: pointer;
+            transition: transform .25s ease, box-shadow .25s ease;
+          }
+          .sig-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(17,24,39,0.14); }
+          .sig-card img { width:100%; height: 200px; object-fit: cover; display:block; }
+          .sig-card .sig-cap { padding: .9rem 1rem; color: var(--text-light); line-height: 1.6; min-height: 60px; }
+          .sig-cap strong { color: var(--second-color); }
+
+          .sig-gallery { margin-top: 2rem; display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+          .sig-thumb { position: relative; border-radius:.75rem; overflow:hidden; border:1px solid rgba(17,24,39,0.08); background:#fff; box-shadow:0 6px 16px rgba(17,24,39,0.08); cursor:pointer; }
+          .sig-thumb img { width:100%; height: 180px; object-fit:cover; display:block; }
+          .sig-thumb span { position:absolute; left:.5rem; bottom:.5rem; right:.5rem; background: rgba(0,0,0,0.45); color:#fff; font-size:.9rem; padding:.35rem .5rem; border-radius:.5rem; }
+
+          .sig-lightbox { position:fixed; inset:0; background: rgba(0,0,0,0.9); display:none; align-items:center; justify-content:center; z-index: 1000; }
+          .sig-lightbox img { max-width: 92vw; max-height: 76vh; border-radius:.75rem; box-shadow:0 12px 40px rgba(0,0,0,0.5); }
+          .sig-lb-ui { position:absolute; inset:0; pointer-events:none; }
+          .sig-close, .sig-prev, .sig-next { pointer-events:auto; position:absolute; background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.25); color:#fff; border-radius: 999px; width:44px; height:44px; display:flex; align-items:center; justify-content:center; font-size:1.25rem; cursor:pointer; transition: background .2s ease; }
+          .sig-close { top:1rem; right:1rem; }
+          .sig-prev { left:1rem; top:50%; transform: translateY(-50%); }
+          .sig-next { right:1rem; top:50%; transform: translateY(-50%); }
+          .sig-close:hover, .sig-prev:hover, .sig-next:hover { background: rgba(255,255,255,0.16); }
+          .sig-caption { color:#e5e7eb; text-align:center; margin-top: .75rem; max-width: 960px; padding: 0 1rem; }
+
+          @media (min-width: 968px) {
+            .sig-hero h1 { font-size: 2.4rem; }
+            .sig-card img { height: 220px; }
+            .sig-thumb img { height: 200px; }
+          }
+          /* Sequential image + description blocks */
+          .sig-seq { margin-top: 1.5rem; display: grid; gap: 2rem; }
+          .sig-item { background:#fff; border:1px solid rgba(17,24,39,0.08); border-radius: 1rem; box-shadow: 0 8px 20px rgba(17,24,39,0.08); overflow: hidden; }
+          .sig-item .sig-desc { padding: 1rem 1.25rem; }
+          .sig-item .sig-title { font-weight: var(--font-bold); color: var(--second-color); margin: 0 0 .25rem; font-size: 1.1rem; }
+          .sig-item .sig-text { margin: 0; color: var(--text-light); line-height: 1.7; }
+          .sig-item img { width: 100%; height: auto; display: block; border-top: 1px solid rgba(17,24,39,0.06); }
+        </style>
     </head>
     <body>
         <header class="l-header">
@@ -31,28 +104,35 @@
             <section class="section" id="project">
                 <h2 class="section-title">Digital Signature Solution</h2>
                 <div class="bd-grid">
-                    <div style="background: var(--bg-color); padding: 2rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
-                        <div style="text-align: center; margin-bottom: 2rem;">
-                            <div style="width: 100%; height: 300px; background: linear-gradient(135deg, var(--first-color), var(--first-color-alt)); border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; margin-bottom: 2rem;">
-                                <i class='bx bx-code-alt'></i>
+                    <div class="sig-hero">
+                        <h1> e‑Signature platform for modern document management</h1>
+                        <p>
+                          I built a practical e‑signature app that feels familiar from day one.
+                          You can customize your dashboard, bring in PDFs, make scans searchable with OCR,
+                          get quick AI summaries, draw your signature, and drop it exactly where it belongs.
+                          Sharing is simple and permissioned, tasks keep everyone aligned, real‑time notifications
+                          are delivered via SignalR, and every signature is backed by certificates and strong crypto.
+                        </p>
+                        <div class="sig-badges">
+                            <span class="sig-badge">Digital Signature</span>
+                            <span class="sig-badge">AI Summary</span>
+                            <span class="sig-badge">Drag & Drop</span>
+                            <span class="sig-badge">Crypto Sign</span>
+                            <span class="sig-badge">Collaboration</span>
+                            <span class="sig-badge">OCR</span>
+                            <span class="sig-badge">Real-timeNotifications SignalR </span>
+                        </div>
+                        <div style="margin-top: 1.5rem;">
+                            <div style="position: relative; padding-top: 56.25%; border-radius: var(--border-radius-md); overflow: hidden; box-shadow: 0 10px 24px rgba(17,24,39,0.12); background: #000;">
+                                <video controls style="position:absolute; top:0; left:0; width:100%; height:100%;" poster="../assets/img/signature-imgs/home-page.png">
+                                    <source src="../assets/img/signature-imgs/1013.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                         </div>
-                        
-                        <h3 style="color: var(--first-color); font-weight: var(--font-bold); margin-bottom: 1rem;">Project Overview</h3>
-                        <p style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-light);">
-                            Developed a comprehensive digital signature platform that enables secure document workflows and electronic signatures. 
-                            The solution supports multiple signature types, document formats, and provides a complete audit trail for compliance requirements.
-                        </p>
+                    </div>
 
-                        <h3 style="color: var(--first-color); font-weight: var(--font-bold); margin-bottom: 1rem;">Key Features</h3>
-                        <ul style="margin-bottom: 2rem; padding-left: 1.5rem; line-height: 1.8;">
-                            <li>Multi-format document support (PDF, DOC, DOCX)</li>
-                            <li>Multiple signature types (electronic, digital, biometric)</li>
-                            <li>Secure document storage and encryption</li>
-                            <li>Complete audit trail and compliance reporting</li>
-                            <li>User role management and permissions</li>
-                            <li>Real-time signature validation</li>
-                        </ul>
+                    <div class="sig-seq" id="sig-seq"></div>
 
                         <h3 style="color: var(--first-color); font-weight: var(--font-bold); margin-bottom: 1rem;">Technologies Used</h3>
                         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;">
@@ -90,6 +170,76 @@
         </footer>
         <script src="https://unpkg.com/scrollreveal"></script>
         <script src="../assets/js/main.js"></script>
+        <script>
+        // Sequential blocks: description text then image (from ../assets/img/signature-imgs/)
+        (function() {
+          const files = [
+            'dashboard-user.png',
+            'home-page.png',
+            'profile.png',
+            'projects.png',
+            'documents.png',
+            'summary-AI.png',
+            'document-view.png',
+            'creation-signature.png',
+            'placement-signature.png',
+            'tasks.png',
+            'task-details.png',
+            'choose-document-for-task.png',
+            
+            
+          ];
+
+          const base = '../assets/img/signature-imgs/';
+          const humanize = (name) => name
+            .replace(/\.[^.]+$/, '')
+            .replace(/[-_]/g, ' ')
+            .replace(/\b\w/g, c => c.toUpperCase());
+
+          const describe = (name) => {
+            const n = name.toLowerCase();
+            if (n.includes('dashboard-user')) return 'Your personal dashboard you can arrange however you like. Drag widgets around and keep the stats you care about front and center.';
+            if (n.includes('home-page')) return 'A friendly home to jump into your recent documents, open tasks, and active projects in one click.';
+            if (n.includes('profile')) return 'Keep your profile up to date: name, contact info, and the preferences you want across the app.';
+            if (n.includes('projects')) return 'Where we group documents and people into a workflow. Track progress at a glance and keep work organized.';
+            if (n.includes('documents')) return 'All your PDFs in one place. Upload, version, and search—scanned files get OCR so they’re actually searchable.';
+            if (n.includes('summary-ai')) return 'Press “Summarize” to get a short brief of a long PDF. Perfect when you need the gist fast.';
+            if (n.includes('document-view')) return 'A clean reader with text highlights, comments, and placeholders for signatures or initials.';
+            if (n.includes('creation-signature')) return 'Draw your signature with mouse or touch, tweak thickness and style, then save it for reuse.';
+            if (n.includes('placement-signature')) return 'Drag the signature, date, and initial fields onto the exact spots—page by page.';
+            if (n.includes('task-details')) return 'The details behind a single task: assignees, related docs, comments, and a full activity trail.';
+            if (n.includes('tasks')) return 'A simple board to assign work, set due dates, and track progress with your team.';
+            if (n.includes('choose-document-for-task') || n.includes('choose-documents-for-task')) return 'Pick one or more documents that belong to the task so everyone knows what to sign.';
+            return humanize(name);
+          };
+
+          const seq = document.getElementById('sig-seq');
+          files.forEach((f) => {
+            const wrap = document.createElement('section');
+            wrap.className = 'sig-item';
+
+            const desc = document.createElement('div');
+            desc.className = 'sig-desc';
+            const title = document.createElement('h3');
+            title.className = 'sig-title';
+            title.textContent = humanize(f);
+            const text = document.createElement('p');
+            text.className = 'sig-text';
+            text.textContent = describe(f);
+            desc.appendChild(title);
+            desc.appendChild(text);
+
+            const img = document.createElement('img');
+            img.src = base + f;
+            img.alt = humanize(f);
+            img.loading = 'lazy';
+
+            wrap.appendChild(desc);
+            wrap.appendChild(img);
+            seq.appendChild(wrap);
+          });
+        })();
+        </script>
     </body>
 </html>
 
