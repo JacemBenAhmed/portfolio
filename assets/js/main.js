@@ -49,6 +49,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.l-header').classList.toggle('scrolled', window.scrollY > 100);
   });
 
+  // Parallax for hero orbs (performance-friendly)
+  const orbs = document.querySelectorAll('.hero-orb');
+  if (orbs.length) {
+    const parallax = () => {
+      const y = window.scrollY;
+      orbs.forEach((orb, idx) => {
+        const depth = 0.02 + idx * 0.015; // slight different speeds
+        orb.style.transform = `translate3d(0, ${y * depth}px, 0)`;
+      });
+    };
+    window.addEventListener('scroll', parallax, { passive: true });
+    parallax();
+  }
+
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {

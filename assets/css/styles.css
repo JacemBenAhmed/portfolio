@@ -296,6 +296,39 @@
     overflow: hidden;
   }
 
+  /* Hero dynamic background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero-blob {
+    position: absolute;
+    width: 60vmin;
+    height: 60vmin;
+    left: 10%;
+    top: 15%;
+    background: radial-gradient(circle at 30% 30%, rgba(167,139,250,0.5), rgba(124,58,237,0.5) 60%, rgba(109,40,217,0.4));
+    filter: blur(20px) saturate(120%);
+    animation: morphing 18s ease-in-out infinite;
+    will-change: border-radius, transform;
+    z-index: 1;
+  }
+  .hero-orb {
+    position: absolute;
+    width: 28vmin;
+    height: 28vmin;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(129,140,248,0.55), rgba(124,58,237,0.35));
+    filter: blur(10px);
+    animation: float 8s ease-in-out infinite;
+    will-change: transform;
+  }
+  .orb-1 { right: 12%; top: 12%; animation-duration: 7s; }
+  .orb-2 { left: 5%; bottom: 10%; animation-duration: 9s; }
+  .orb-3 { right: 40%; bottom: 5%; animation-duration: 11s; }
+
   .home::before {
     content: '';
     position: absolute;
