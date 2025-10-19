@@ -74,18 +74,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ScrollReveal animations
-  if (typeof ScrollReveal !== 'undefined') {
-    const sr = ScrollReveal({
-      origin: 'top',
-      distance: '40px',
-      duration: 1500,
-      delay: 200
-    });
-    sr.reveal('.home__data, .about__subtitle, .skills__subtitle, .skills__text', {});
-    sr.reveal('.home__social-icon, .about__text', { delay: 300, interval: 100 });
-    sr.reveal('.tech-item, .project-card, #experience .bd-grid > div, #education .bd-grid > div', { interval: 150, origin: 'bottom' });
-  }
+  // ScrollReveal animations - initialize after full load to avoid flashes
+  window.addEventListener('load', () => {
+    if (typeof ScrollReveal !== 'undefined') {
+      const sr = ScrollReveal({
+        origin: 'top',
+        distance: '24px',
+        duration: 800,
+        delay: 0,
+        easing: 'ease-out',
+        cleanup: true,
+        reset: false
+      });
+      sr.reveal('.home__data, .about__subtitle, .skills__subtitle, .skills__text');
+      sr.reveal('.home__social-icon, .about__text', { interval: 80 });
+      sr.reveal('.tech-item, .project-card, #experience .bd-grid > div, #education .bd-grid > div', { origin: 'bottom', interval: 120 });
+    }
+  }, { once: true });
 
   // Button ripple effect
   document.querySelectorAll('.button').forEach(button => {

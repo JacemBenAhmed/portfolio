@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../assets/css/styles.css">
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <title>Daberly E-commerce Platform | Jacem</title>
+        <style>
+          .db-hero { background: linear-gradient(135deg, rgba(16,185,129,.08), rgba(59,130,246,.08)); border: 1px solid rgba(17,24,39,.08); border-radius: var(--border-radius-lg); box-shadow: 0 8px 24px rgba(17,24,39,.08); padding: 2rem; }
+          .db-hero h1 { font-size: 2.4rem; color: var(--second-color); margin-bottom: .75rem; letter-spacing: .2px; }
+          .db-hero p { color: var(--text-light); line-height: 1.95; max-width: 980px; font-size: 1.06rem; }
+          .db-badges { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem; }
+          .db-badge { background: var(--third-color); color: var(--first-color); padding:.4rem .75rem; border-radius: 999px; font-weight: var(--font-semi); font-size:.92rem; }
+
+          .db-cv { margin-top: 1.25rem; background:#fff; border:1px solid rgba(17,24,39,.08); border-radius: var(--border-radius-md); padding: 1.1rem 1.35rem; box-shadow: 0 8px 20px rgba(17,24,39,.06); }
+          .db-cv h3 { margin: 0 0 .6rem; color: var(--first-color); font-weight: var(--font-bold); font-size: 1.2rem; }
+          .db-cv ul { margin: 0; padding-left: 1.25rem; line-height: 1.95; color: var(--text-color); font-size: 1.02rem; list-style: disc; }
+
+          /* Login hero image */
+          .db-hero-media { margin-top: 1.25rem; border-radius: 1rem; overflow: hidden; border:1px solid rgba(17,24,39,.08); box-shadow: 0 10px 26px rgba(17,24,39,.12); background:#fff; padding: .75rem; }
+          .db-hero-media .db-hero-img { max-height: 340px; width: auto; height: auto; display: block; margin: 0 auto; object-fit: contain; background:#f9fafb; border:1px solid rgba(17,24,39,.06); border-radius: .75rem; }
+          @media (max-width: 768px) { .db-hero-media .db-hero-img { max-height: 220px; } }
+          .db-hero-cap { text-align:center; color: var(--text-light); font-size: .98rem; line-height: 1.7; margin-top: .5rem; padding: 0 .5rem .25rem; }
+
+          /* Slider for register/reset/otp */
+          .db-slider { position: relative; margin-top: 1.25rem; border-radius: 1rem; overflow: hidden; border:1px solid rgba(17,24,39,.08); box-shadow: 0 10px 26px rgba(17,24,39,.12); background: #fff; }
+          .db-slides { display: flex; transition: transform .4s ease; }
+          .db-slide { min-width: 100%; display: flex; flex-direction: column; align-items: center; }
+          .db-slide img { max-height: 340px; width: auto; height: auto; display: block; margin: 0 auto; padding: .75rem; object-fit: contain; background: #f9fafb; }
+          @media (max-width: 768px) { .db-slide img { max-height: 220px; } }
+          .db-caption { width: 100%; text-align: center; color: var(--text-light); padding: .75rem 1rem 1rem; font-size: .98rem; line-height: 1.7; }
+          .db-slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,.45); color: #fff; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+          .db-slider-btn:hover { background: rgba(0,0,0,.6); }
+          .db-prev { left: .75rem; }
+          .db-next { right: .75rem; }
+          .db-dots { position: absolute; left: 0; right: 0; bottom: .5rem; display: flex; gap: .4rem; justify-content: center; }
+          .db-dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,.6); cursor: pointer; }
+          .db-dot.active { background: #fff; }
+
+          /* One-per-line gallery blocks */
+          .db-block { margin-top: 1.25rem; background:#fff; border:1px solid rgba(17,24,39,.08); border-radius: 1rem; overflow: hidden; box-shadow: 0 10px 26px rgba(17,24,39,.12); }
+          .db-block img { width: 100%; height: auto; display: block; }
+          .db-block .db-cap { padding: 1rem 1.25rem; font-size: 1rem; line-height: 1.9; }
+
+          /* Tech row in one line with horizontal scroll on small screens */
+          .db-tech-row { display: flex; gap: .5rem; overflow-x: auto; white-space: nowrap; padding-bottom: .5rem; }
+          .db-tech-row::-webkit-scrollbar { height: 6px; }
+          .db-tech-row::-webkit-scrollbar-thumb { background: rgba(17,24,39,.2); border-radius: 999px; }
+          .db-intro-heading { margin-top: 1.75rem; text-align: center; color: var(--second-color); font-weight: var(--font-bold); font-size: 1.2rem; letter-spacing: .2px; }
+        </style>
+    </head>
+    <body>
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="../index.html" class="nav__logo">Jacem</a>
+                </div>
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="../index.html" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="../about.html" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="../skills.html" class="nav__link">Skills</a></li>
+                        <li class="nav__item"><a href="../projects.html" class="nav__link">Projects</a></li>
+                        <li class="nav__item"><a href="../contact.html" class="nav__link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+        <main class="l-main">
+            <section class="section" id="project">
+                <h2 class="section-title">Daberly E-commerce Platform</h2>
+                <div class="bd-grid">
+                    <div class="db-hero">
+                        <h1>Modern e‑commerce platform with full options</h1>
+                        <p>
+                            I built Daberly to be fast, simple, and trustworthy. Shoppers can browse clean product pages,
+                            chat in real‑time when they have questions, and get timely announcements about drops and deals.
+                            Behind the scenes, an admin dashboard gives full control over products, users, orders, and promos.
+                            Everything ships via Docker and Nginx on a VPS, with GitHub Actions keeping deployments hands‑off.
+                        </p>
+                        <div class="db-badges">
+                            <span class="db-badge">E‑commerce</span>
+                            <span class="db-badge">Real‑time Chat</span>
+                            <span class="db-badge">Admin Dashboard</span>
+                            <span class="db-badge">CI/CD</span>
+                        </div>
+                        <div class="db-cv">
+                            <h3>What I did</h3>
+                            <ul>
+                                <li>Developed a modern and secure e‑commerce website for online shoe sales with real‑time chat and dynamic product announcements with videos.</li>
+                                <li>Built a full admin dashboard to manage products, users, orders, and promotions end‑to‑end.</li>
+                                <li>Deployed the full‑stack app on a VPS using Docker and Nginx with CI/CD via GitHub Actions.</li>
+                                <li><strong>Technologies Used:</strong> .NET Core, Vue.js, SignalR, PostgreSQL, Docker, Nginx, Git/GitHub, GitHub Actions.</li>
+                            </ul>
+                        </div>
+                    <div class="db-intro-heading">Let’s show some interfaces</div>
+                        <div class="db-hero-media">
+                            <img class="db-hero-img" src="../assets/img/daberly-imgs/create-account.png" alt="Register full preview">
+                            <p class="db-hero-cap"><strong>Register</strong> — Create your account in seconds with clean fields and inline validation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slider: Register / Reset / OTP -->
+                    <div class="db-slider" id="auth-slider">
+                        <div class="db-slides">
+                            <div class="db-slide">
+                                <img src="../assets/img/daberly-imgs/login.png" alt="Login">
+                                <div class="db-caption"><strong>Login</strong> — Secure access with instant feedback and session handling.</div>
+                            </div>
+                            <div class="db-slide">
+                                <img src="../assets/img/daberly-imgs/recup-password.png" alt="Reset Password">
+                                <div class="db-caption"><strong>Reset password</strong> — Simple recovery flow so users can get back in fast.</div>
+                            </div>
+                            <div class="db-slide">
+                                <img src="../assets/img/daberly-imgs/otp-code.png" alt="OTP Code">
+                                <div class="db-caption"><strong>OTP code</strong> — Extra verification step to protect accounts.</div>
+                            </div>
+                        </div>
+                        <button class="db-slider-btn db-prev" aria-label="Previous"><i class='bx bx-chevron-left'></i></button>
+                        <button class="db-slider-btn db-next" aria-label="Next"><i class='bx bx-chevron-right'></i></button>
+                        <div class="db-dots">
+                            <span class="db-dot active" data-index="0"></span>
+                            <span class="db-dot" data-index="1"></span>
+                            <span class="db-dot" data-index="2"></span>
+                        </div>
+                    </div>
+
+                    <!-- One-per-line large blocks -->
+                    <div class="db-block">
+                        <img src="../assets/img/daberly-imgs/home-page.png" alt="Home page">
+                        <div class="db-cap"><strong>Home</strong> — Clean storefront with clear categories, fast search, and highlights.</div>
+                    </div>
+                    <div class="db-block">
+                        <img src="../assets/img/daberly-imgs/chat.png" alt="Real-time chat">
+                        <div class="db-cap"><strong>Chat</strong> — Real‑time support and sales conversations with SignalR.</div>
+                    </div>
+                    <div class="db-block">
+                        <img src="../assets/img/daberly-imgs/real-time-annonces.png" alt="Realtime announcements">
+                        <div class="db-cap"><strong>Announcements</strong> — Live campaigns and product updates as they happen.</div>
+                    </div>
+                    <div class="db-block">
+                        <img src="../assets/img/daberly-imgs/videosproducts-playlists.png" alt="Product videos playlists">
+                        <div class="db-cap"><strong>Product videos</strong> — Playlists to show materials, fit, and details.</div>
+                    </div>
+                    <div class="db-block">
+                        <img src="../assets/img/daberly-imgs/admin-dashboard.png" alt="Admin dashboard">
+                        <div class="db-cap"><strong>Admin dashboard</strong> — Manage products, users, orders, and promotions with confidence.</div>
+                    </div>
+                    <div class="db-block">
+                        <img src="../assets/img/daberly-imgs/mes-commandes.png" alt="My orders">
+                        <div class="db-cap"><strong>My Orders</strong> — See history, statuses, and details in one place.</div>
+                    </div>
+                    <div class="db-block">
+                        <img src="../assets/img/daberly-imgs/suivi-commandes.png" alt="Orders tracking">
+                        <div class="db-cap"><strong>Orders tracking</strong> — Delivery states and shipment updates at a glance.</div>
+                    </div>
+                    <div class="db-block">
+                        <img src="../assets/img/daberly-imgs/profile edit.png" alt="Profile edit">
+                        <div class="db-cap"><strong>Profile</strong> — Update personal details and preferences.</div>
+                    </div>
+
+                    <h3 style="color: var(--first-color); font-weight: var(--font-bold); margin: 2rem 0 1rem;">Technologies Used</h3>
+                    <div class="db-tech-row" style="margin-bottom: 2rem;">
+                        <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">.NET Core</span>
+                        <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">Vue.js</span>
+                        <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">SignalR</span>
+                        <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">PostgreSQL</span>
+                        <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">Docker</span>
+                        <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">Nginx</span>
+                        <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">Git/GitHub</span>
+                        <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">GitHub Actions</span>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="../projects.html" class="button" style="margin-right: 1rem;">Back to Projects</a>
+                        <a href="../index.html" class="button">Back to Home</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__title">JACEM BEN AHMED</p>
+            <div class="footer__social">
+                <a href="#" class="footer__icon"><i class='bx bxl-linkedin' ></i></a>
+                <a href="#" class="footer__icon"><i class='bx bxl-github' ></i></a>
+                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+            </div>
+            <p class="footer__copy">© Jacem Ben Ahmed. All rights reserved.</p>
+        </footer>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="../assets/js/main.js"></script>
+        <script>
+        // Minimal slider logic for the three auth screens
+        (function() {
+          const slider = document.getElementById('auth-slider');
+          if (!slider) return;
+          const track = slider.querySelector('.db-slides');
+          const dots = Array.from(slider.querySelectorAll('.db-dot'));
+          const prev = slider.querySelector('.db-prev');
+          const next = slider.querySelector('.db-next');
+          let index = 0;
+
+          function go(i) {
+            index = (i + dots.length) % dots.length;
+            track.style.transform = 'translateX(' + (-100 * index) + '%)';
+            dots.forEach((d, di) => d.classList.toggle('active', di === index));
+          }
+
+          prev.addEventListener('click', () => go(index - 1));
+          next.addEventListener('click', () => go(index + 1));
+          dots.forEach(d => d.addEventListener('click', () => go(parseInt(d.dataset.index))));
+
+          // Swipe support (basic)
+          let startX = null;
+          track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+          track.addEventListener('touchend', (e) => {
+            if (startX == null) return;
+            const dx = e.changedTouches[0].clientX - startX;
+            if (Math.abs(dx) > 40) { dx > 0 ? go(index - 1) : go(index + 1); }
+            startX = null;
+          }, { passive: true });
+        })();
+        </script>
+    </body>
+    </html>
+
+
