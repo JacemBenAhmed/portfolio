@@ -1,3 +1,26 @@
+/*===== DROPDOWN MENU =====*/
+function toggleDropdown(button) {
+  // Close all dropdowns first
+  const allDropdowns = document.querySelectorAll('.resume-dropdown-content');
+  allDropdowns.forEach(dropdown => {
+    dropdown.classList.remove('show');
+  });
+  
+  // Toggle the clicked dropdown
+  const dropdown = button.nextElementSibling;
+  dropdown.classList.toggle('show');
+}
+
+// Close dropdowns when clicking outside
+window.onclick = function(event) {
+  if (!event.target.matches('.resume-btn') && !event.target.closest('.resume-btn')) {
+    const dropdowns = document.querySelectorAll('.resume-dropdown-content');
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.remove('show');
+    });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu toggle
   const toggle = document.getElementById('nav-toggle');

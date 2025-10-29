@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
         <!-- =====BOX ICONS===== -->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
@@ -25,6 +26,7 @@
                         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
                         <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
                         <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
+                        <li class="nav__item"><a href="#competitive-programming" class="nav__link">CP</a></li>
                         <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
                     </ul>
                 </div>
@@ -43,10 +45,16 @@
 
                     <div class="home__buttons">
                         <a href="#projects" class="button">View Projects</a>
-                        <a href="assets/resume/cv_JacemBenAhmed.pdf" class="button button--outline" download="cv_JacemBenAhmed.pdf">
-                            <i class='bx bx-download'></i>
-                            Download Resume
-                        </a>
+                        <div class="resume-dropdown">
+                            <button class="button button--outline resume-btn" onclick="toggleDropdown(this)">
+                                <i class='bx bx-download'></i>
+                                Download Resume
+                            </button>
+                            <div class="resume-dropdown-content">
+                                <a href="assets/resume/cv_JacemBenAhmed_(EN).pdf" download="cv_JacemBenAhmed_(EN).pdf" target="_blank">English</a>
+                                <a href="assets/resume/cv_JacemBenAhmed_(FR).pdf" download="cv_JacemBenAhmed_(FR).pdf" target="_blank">Français</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -67,10 +75,16 @@
                         <p class="about__text">Hi, I'm Jacem BEN AHMED, 22 y.o, based in Zarzis. I'm a software engineering student at ISIMG, passionate about software development, DevOps, and problem-solving. I love building efficient and creative solutions, exploring new technologies, and turning ideas into real-world applications.</p>
                         
                         <div class="about__actions">
-                            <a href="assets/resume/cv_JacemBenAhmed.pdf" class="button button--outline" download="cv_JacemBenAhmed.pdf">
-                                <i class='bx bx-download'></i>
-                                Download Resume
-                            </a>
+                            <div class="resume-dropdown">
+                                <button class="button button--outline resume-btn" onclick="toggleDropdown(this)">
+                                    <i class='bx bx-download'></i>
+                                    Download Resume
+                                </button>
+                                <div class="resume-dropdown-content">
+                                    <a href="assets/resume/cv_JacemBenAhmed_(EN).pdf" download="cv_JacemBenAhmed_(EN).pdf" target="_blank">English</a>
+                                    <a href="assets/resume/cv_JacemBenAhmed_(FR).pdf" download="cv_JacemBenAhmed_(FR).pdf" target="_blank">Français</a>
+                                </div>
+                            </div>
                         </div>
                     </div>                                   
                 </div>
@@ -238,7 +252,7 @@
 
                 <div class="skills__container bd-grid">          
                     <div class="skills__content">
-                        <h2 class="skills__subtitle">Technologies</h2>
+                        
                         <p class="skills__text">Tools and stacks I work with.</p>
                         
                         <div class="tech-grid">
@@ -295,7 +309,65 @@
                 </div>
             </section>
 
-            
+            <!--===== COMPETITIVE PROGRAMMING =====-->
+            <section class="cp-section section" id="competitive-programming">
+                <h2 class="section-title">Competitive Programming</h2>
+
+                <div class="cp__container bd-grid">
+                    <div class="cp__content">
+                        <h2 class="cp__subtitle">Problem Solving Journey</h2>
+                        <p class="cp__text">My passion for algorithms and problem-solving has led me to solve over 400 problems on Codeforces, achieving Pupil rank. I also actively participate in LeetCode challenges to sharpen my skills.</p>
+                        
+                        <div class="cp-stats">
+                            <div class="cp-stat-item">
+                                <div class="cp-stat-number">400+</div>
+                                <div class="cp-stat-label">Problems Solved</div>
+                            </div>
+                            <div class="cp-stat-item">
+                                <div class="cp-stat-number">Pupil</div>
+                                <div class="cp-stat-label">Codeforces Rank</div>
+                            </div>
+                            <div class="cp-stat-item">
+                                <div class="cp-stat-number">2</div>
+                                <div class="cp-stat-label">Competitions Won</div>
+                            </div>
+                        </div>
+
+                        <div class="cp-achievements">
+                            <h3 class="cp-achievements-title">Achievements</h3>
+                            <ul class="cp-achievements-list">
+                                <li>
+                                    <i class='bx bx-trophy'></i>
+                                    <span>Winner of Brain Boost CP Competition</span>
+                                </li>
+                                <li>
+                                    <i class='bx bx-trophy'></i>
+                                    <span>Winner of EnigDev 3.0 CP Competition</span>
+                                </li>
+                                <li>
+                                    <i class='bx bx-code-block'></i>
+                                    <span>Participated in multiple national and international competitions</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="cp-platforms">
+                            <a href="https://codeforces.com/" class="cp-platform-link" target="_blank">
+                                <div class="cp-platform">
+                                    <i class='bx bx-code-alt'></i>
+                                    <span>Codeforces</span>
+                                </div>
+                            </a>
+                            <a href="https://leetcode.com/" class="cp-platform-link" target="_blank">
+                                <div class="cp-platform">
+                                    <i class='bx bx-code-curly'></i>
+                                    <span>LeetCode</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!--===== CONTACT =====-->
             <section class="contact section" id="contact">
