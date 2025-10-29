@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const socialLinks = {
     linkedin: 'https://www.linkedin.com/in/jacem-ben-ahmed-b26903275/',  // Replace with your LinkedIn
     twitter: 'https://x.com/yourusername',  // Replace with your X/Twitter
-    github: 'https://github.com/yourusername'  // Replace with your GitHub
+    github: 'https://github.com/JacemBenAhmed'  // Replace with your GitHub
   };
 
   document.querySelectorAll('.home__social-icon, .footer__icon').forEach(link => {
