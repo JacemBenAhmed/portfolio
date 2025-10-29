@@ -176,6 +176,32 @@
   .section {
     padding-top: 3rem;
     padding-bottom: 2rem;
+    visibility: visible !important; /* Ensure sections are always visible */
+    opacity: 1 !important; /* Ensure sections are always visible */
+  }
+  
+  /* Fix for transparency issues in specific sections */
+  #education, 
+  #experience, 
+  #skills,
+  #projects,
+  .projects-section,
+  .project-card,
+  .projects-grid,
+  .skills__container,
+  #education .bd-grid > div,
+  #experience .bd-grid > div {
+    visibility: visible !important;
+    opacity: 1 !important;
+    background-color: var(--bg-color) !important;
+  }
+  
+  /* Restore tech items to original style */
+  .tech-grid,
+  .tech-item {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: flex !important;
   }
 
   /*===== LAYOUT =====*/
@@ -727,13 +753,51 @@
   /* Tech Grid Layout */
   .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-    justify-items: center;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 0 1rem;
+  }
+  
+  /* Responsive breakpoints for tech grid */
+  @media screen and (max-width: 992px) {
+    .tech-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .tech-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .tech-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      padding: 0 0.5rem;
+    }
+  }
+  
+  @media screen and (max-width: 380px) {
+    .tech-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    .tech-grid {
+      grid-template-columns: repeat(1, 1fr);
+      max-width: 250px;
+    }
   }
   .tech-item {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -744,12 +808,34 @@
     border: 1px solid rgba(17, 24, 39, 0.06);
     transition: var(--transition-normal);
     width: 100%;
-    min-width: 220px;
-    max-width: 280px;
+    min-width: 0;
+    max-width: 100%;
     text-align: center;
     position: relative;
     overflow: hidden;
     animation: fadeInUp 0.6s ease-out;
+    height: 100%;
+  }
+  @media screen and (max-width: 576px) {
+    .tech-item {
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+    .tech-item i {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  @media screen and (max-width: 380px) {
+    .tech-item {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .tech-item i {
+      font-size: 1.25rem;
+      margin-bottom: 0.4rem;
+    }
   }
   .tech-item::before { content: none; }
   .tech-item:hover {
@@ -1401,6 +1487,24 @@
   }
 
   /* ===== MEDIA QUERIES=====*/
+  @media screen and (max-width: 576px) {
+    .section {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .section-title {
+      margin-bottom: var(--mb-3);
+      font-size: 1.8rem;
+    }
+    .section-title::after {
+      width: 60px;
+      top: 2.5rem;
+    }
+    .bd-grid {
+      padding: 0 1rem;
+    }
+  }
+  
   @media screen and (max-width: 320px) {
     .home {
       row-gap: 2rem;
@@ -1418,7 +1522,7 @@
       max-width: 250px;
     }
     .tech-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 1fr);
       gap: 1rem;
     }
     .tech-item {
@@ -1452,7 +1556,7 @@
       text-align: initial;
     }
     .tech-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
     .skills__container {
@@ -1526,6 +1630,8 @@
     }
     .tech-grid {
       grid-template-columns: repeat(4, 1fr);
+      max-width: 1200px;
+      margin: 2rem auto 0;
     }
     .work__container {
       grid-template-columns: repeat(3, 1fr);
@@ -1544,7 +1650,8 @@
       width: 450px;
     }
     .tech-grid {
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       max-width: 1200px;
+      gap: 2rem;
     }
   }

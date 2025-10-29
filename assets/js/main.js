@@ -97,23 +97,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ScrollReveal animations - initialize after full load to avoid flashes
-  window.addEventListener('load', () => {
-    if (typeof ScrollReveal !== 'undefined') {
-      const sr = ScrollReveal({
-        origin: 'top',
-        distance: '24px',
-        duration: 800,
-        delay: 0,
-        easing: 'ease-out',
-        cleanup: true,
-        reset: false
-      });
-      sr.reveal('.home__data, .about__subtitle, .skills__subtitle, .skills__text');
-      sr.reveal('.home__social-icon, .about__text', { interval: 80 });
-      sr.reveal('.tech-item, .project-card, #experience .bd-grid > div, #education .bd-grid > div', { origin: 'bottom', interval: 120 });
-    }
-  }, { once: true });
+  // Immediately display all sections without animation to prevent transparency issues
+  document.addEventListener('DOMContentLoaded', function() {
+    // Force all sections to be visible immediately
+    document.querySelectorAll('section, .section, #education, #experience, #skills, #projects, .projects-section, .project-card, .projects-grid, .skills__container').forEach(el => {
+      el.style.visibility = 'visible';
+      el.style.opacity = '1';
+    });
+    
+    // Special handling for grid items
+    document.querySelectorAll('#education .bd-grid > div, #experience .bd-grid > div').forEach(el => {
+      el.style.visibility = 'visible';
+      el.style.opacity = '1';
+    });
+    
+    // Restore tech items to original style
+    document.querySelectorAll('.tech-grid, .tech-item').forEach(el => {
+      el.style.visibility = 'visible';
+      el.style.opacity = '1';
+      el.style.display = 'flex';
+    });
+    
+    // Tech grid is now using CSS grid layout instead of Swiper
+  });
+  
+  // Initialize ScrollReveal only for non-problematic elements
+  if (typeof ScrollReveal !== 'undefined') {
+    const sr = ScrollReveal({
+      origin: 'top',
+      distance: '24px',
+      duration: 800,
+      delay: 0,
+      easing: 'ease-out',
+      cleanup: false,
+      reset: false
+    });
+    
+    // Only animate these safe elements
+    sr.reveal('.home__data');
+    sr.reveal('.home__social-icon', { interval: 80 });
+    sr.reveal('.about__subtitle, .about__text');
+    sr.reveal('.project-card', { origin: 'bottom', interval: 120 });
+  }
 
   // Button ripple effect
   document.querySelectorAll('.button').forEach(button => {
