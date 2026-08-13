@@ -3,7 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Signy — a digital signature platform built with .NET Core, Vue.js and Azure.">
+
         <link rel="stylesheet" href="../assets/css/styles.css">
+        <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+
+        <script>
+            (function () {
+                try {
+                    var storedTheme = localStorage.getItem('portfolio-theme');
+                    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    var initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+                    document.documentElement.setAttribute('data-theme', initialTheme);
+                    document.documentElement.style.colorScheme = initialTheme;
+                } catch (error) {}
+            }());
+        </script>
+
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
         <title>Digital Signature Solution | Jacem</title>
         <style>
@@ -39,9 +55,9 @@
           .sig-card {
             position: relative;
             border-radius: 1rem;
-            border: 1px solid rgba(17,24,39,0.08);
+            border: 1px solid var(--border-color);
             overflow: hidden;
-            background: #fff;
+            background: var(--surface-solid);
             box-shadow: 0 8px 20px rgba(17,24,39,0.08);
             cursor: pointer;
             transition: transform .25s ease, box-shadow .25s ease;
@@ -49,10 +65,10 @@
           .sig-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(17,24,39,0.14); }
           .sig-card img { width:100%; height: 200px; object-fit: cover; display:block; }
           .sig-card .sig-cap { padding: .9rem 1rem; color: var(--text-light); line-height: 1.6; min-height: 60px; }
-          .sig-cap strong { color: var(--second-color); }
+          .sig-cap strong { color: var(--text-color); }
 
           .sig-gallery { margin-top: 2rem; display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
-          .sig-thumb { position: relative; border-radius:.75rem; overflow:hidden; border:1px solid rgba(17,24,39,0.08); background:#fff; box-shadow:0 6px 16px rgba(17,24,39,0.08); cursor:pointer; }
+          .sig-thumb { position: relative; border-radius:.75rem; overflow:hidden; border:1px solid var(--border-color); background:var(--surface-solid); box-shadow:0 6px 16px rgba(17,24,39,0.08); cursor:pointer; }
           .sig-thumb img { width:100%; height: 180px; object-fit:cover; display:block; }
           .sig-thumb span { position:absolute; left:.5rem; bottom:.5rem; right:.5rem; background: rgba(0,0,0,0.45); color:#fff; font-size:.9rem; padding:.35rem .5rem; border-radius:.5rem; }
 
@@ -73,30 +89,48 @@
           }
           /* Sequential image + description blocks */
           .sig-seq { margin-top: 1.5rem; display: grid; gap: 2rem; }
-          .sig-item { background:#fff; border:1px solid rgba(17,24,39,0.08); border-radius: 1rem; box-shadow: 0 8px 20px rgba(17,24,39,0.08); overflow: hidden; }
+          .sig-item { background:var(--surface-solid); border:1px solid var(--border-color); border-radius: 1rem; box-shadow: 0 8px 20px rgba(17,24,39,0.08); overflow: hidden; }
           .sig-item .sig-desc { padding: 1rem 1.25rem; }
-          .sig-item .sig-title { font-weight: var(--font-bold); color: var(--second-color); margin: 0 0 .25rem; font-size: 1.1rem; }
+          .sig-item .sig-title { font-weight: var(--font-bold); color: var(--text-color); margin: 0 0 .25rem; font-size: 1.1rem; }
           .sig-item .sig-text { margin: 0; color: var(--text-light); line-height: 1.7; }
-          .sig-item img { width: 100%; height: auto; display: block; border-top: 1px solid rgba(17,24,39,0.06); }
+          .sig-item img { width: 100%; height: auto; display: block; border-top: 1px solid var(--border-color); }
         </style>
     </head>
     <body>
-        <header class="l-header">
+        <!--===== SCROLL PROGRESS =====-->
+        <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+        <!--===== ANIMATED BACKGROUND =====-->
+        <div class="bg-scene" aria-hidden="true">
+            <span class="bg-orb bg-orb--1"></span>
+            <span class="bg-orb bg-orb--2"></span>
+            <span class="bg-orb bg-orb--3"></span>
+            <span class="bg-orb bg-orb--4"></span>
+            <canvas id="particles-canvas"></canvas>
+        </div>
+        <header class="l-header" id="header">
             <nav class="nav bd-grid">
                 <div>
-                    <a href="../index.html" class="nav__logo">Jacem</a>
+                    <a href="../index.html" class="nav__logo" aria-label="Jacem Ben Ahmed — Home">
+                        Jacem <span>Ben Ahmed</span>
+                    </a>
                 </div>
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item"><a href="../index.html" class="nav__link">Home</a></li>
                         <li class="nav__item"><a href="../about.html" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="../skills.html" class="nav__link">Skills</a></li>
+                        <li class="nav__item"><a href="../index.html#skills" class="nav__link">Skills</a></li>
                         <li class="nav__item"><a href="../projects.html" class="nav__link">Projects</a></li>
                         <li class="nav__item"><a href="../contact.html" class="nav__link">Contact</a></li>
                     </ul>
                 </div>
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
+                <div class="nav__actions">
+                    <button class="nav__theme" id="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+                        <i class='bx bx-moon'></i>
+                    </button>
+                    <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Open menu">
+                        <i class='bx bx-menu'></i>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -157,18 +191,17 @@
                             <a href="../index.html" class="button">Back to Home</a>
                         </div>
                     </div>
-                </div>
             </section>
         </main>
         <footer class="footer">
-            <p class="footer__title">JACEM BEN AHMED</p>
+            <p class="footer__title">JACEM <span>BEN AHMED</span></p>
             <div class="footer__social">
-                <a href="#" class="footer__icon"><i class='bx bxl-linkedin' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-github' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+                <a href="https://www.linkedin.com/in/jacem-ben-ahmed" class="footer__icon" aria-label="LinkedIn Profile"><i class='bx bxl-linkedin' ></i></a>
+                <a href="https://github.com/JacemBenAhmed" class="footer__icon" aria-label="GitHub Profile"><i class='bx bxl-github' ></i></a>
             </div>
-            <p class="footer__copy">© Jacem Ben Ahmed. All rights reserved.</p>
+            <p class="footer__copy">&#169; Jacem Ben Ahmed — All rights reserved</p>
         </footer>
+        <button class="scroll-top" id="scroll-top" aria-label="Scroll back to top"><i class='bx bx-chevron-up'></i></button>
         <script src="https://unpkg.com/scrollreveal"></script>
         <script src="../assets/js/main.js"></script>
         <script>

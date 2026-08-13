@@ -3,7 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Daberly — an e-commerce platform for resellers built with .NET Core, Vue.js and SignalR.">
+
         <link rel="stylesheet" href="../assets/css/styles.css">
+        <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+
+        <script>
+            (function () {
+                try {
+                    var storedTheme = localStorage.getItem('portfolio-theme');
+                    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    var initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+                    document.documentElement.setAttribute('data-theme', initialTheme);
+                    document.documentElement.style.colorScheme = initialTheme;
+                } catch (error) {}
+            }());
+        </script>
+
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
         <title>Daberly E-commerce Platform | Jacem</title>
         <style>
@@ -13,21 +29,23 @@
           .db-badges { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem; }
           .db-badge { background: var(--third-color); color: var(--first-color); padding:.4rem .75rem; border-radius: 999px; font-weight: var(--font-semi); font-size:.92rem; }
 
-          .db-cv { margin-top: 1.25rem; background:#fff; border:1px solid rgba(17,24,39,.08); border-radius: var(--border-radius-md); padding: 1.1rem 1.35rem; box-shadow: 0 8px 20px rgba(17,24,39,.06); }
+          .db-cv { margin-top: 1.25rem; background:var(--surface-solid); border:1px solid var(--border-color); border-radius: var(--border-radius-md); padding: 1.1rem 1.35rem; box-shadow: 0 8px 20px rgba(17,24,39,.06); }
           .db-cv h3 { margin: 0 0 .6rem; color: var(--first-color); font-weight: var(--font-bold); font-size: 1.2rem; }
           .db-cv ul { margin: 0; padding-left: 1.25rem; line-height: 1.95; color: var(--text-color); font-size: 1.02rem; list-style: disc; }
 
           /* Login hero image */
-          .db-hero-media { margin-top: 1.25rem; border-radius: 1rem; overflow: hidden; border:1px solid rgba(17,24,39,.08); box-shadow: 0 10px 26px rgba(17,24,39,.12); background:#fff; padding: .75rem; }
-          .db-hero-media .db-hero-img { max-height: 340px; width: auto; height: auto; display: block; margin: 0 auto; object-fit: contain; background:#f9fafb; border:1px solid rgba(17,24,39,.06); border-radius: .75rem; }
+          .db-hero-media { margin-top: 1.25rem; border-radius: 1rem; overflow: hidden; border:1px solid var(--border-color); box-shadow: 0 10px 26px rgba(17,24,39,.12); background:var(--surface-solid); padding: .75rem; }
+          .db-hero-media .db-hero-img { max-height: 340px; width: auto; height: auto; display: block; margin: 0 auto; object-fit: contain; background:#f9fafb; border:1px solid var(--border-color); border-radius: .75rem; }
+          html[data-theme='dark'] .db-hero-media .db-hero-img { background:#0f172a; }
           @media (max-width: 768px) { .db-hero-media .db-hero-img { max-height: 220px; } }
           .db-hero-cap { text-align:center; color: var(--text-light); font-size: .98rem; line-height: 1.7; margin-top: .5rem; padding: 0 .5rem .25rem; }
 
           /* Slider for register/reset/otp */
-          .db-slider { position: relative; margin-top: 1.25rem; border-radius: 1rem; overflow: hidden; border:1px solid rgba(17,24,39,.08); box-shadow: 0 10px 26px rgba(17,24,39,.12); background: #fff; }
+          .db-slider { position: relative; margin-top: 1.25rem; border-radius: 1rem; overflow: hidden; border:1px solid var(--border-color); box-shadow: 0 10px 26px rgba(17,24,39,.12); background: var(--surface-solid); }
           .db-slides { display: flex; transition: transform .4s ease; }
           .db-slide { min-width: 100%; display: flex; flex-direction: column; align-items: center; }
-          .db-slide img { max-height: 340px; width: auto; height: auto; display: block; margin: 0 auto; padding: .75rem; object-fit: contain; background: #f9fafb; }
+          .db-slide img { max-height: 340px; width: auto; height: auto; display: block; margin: 0 auto; padding: .75rem; object-fit: contain; background:#f9fafb; }
+          html[data-theme='dark'] .db-slide img { background:#0f172a; }
           @media (max-width: 768px) { .db-slide img { max-height: 220px; } }
           .db-caption { width: 100%; text-align: center; color: var(--text-light); padding: .75rem 1rem 1rem; font-size: .98rem; line-height: 1.7; }
           .db-slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,.45); color: #fff; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); display: flex; align-items: center; justify-content: center; cursor: pointer; }
@@ -39,34 +57,50 @@
           .db-dot.active { background: #fff; }
 
           /* One-per-line gallery blocks */
-          .db-block { margin-top: 1.25rem; background:#fff; border:1px solid rgba(17,24,39,.08); border-radius: 1rem; overflow: hidden; box-shadow: 0 10px 26px rgba(17,24,39,.12); }
+          .db-block { margin-top: 1.25rem; background:var(--surface-solid); border:1px solid var(--border-color); border-radius: 1rem; overflow: hidden; box-shadow: 0 10px 26px rgba(17,24,39,.12); }
           .db-block img { width: 100%; height: auto; display: block; }
-          .db-block .db-cap { padding: 1rem 1.25rem; font-size: 1rem; line-height: 1.9; }
+          .db-block .db-cap { padding: 1rem 1.25rem; font-size: 1rem; line-height: 1.9; color: var(--text-light); }
 
           /* Tech row in one line with horizontal scroll on small screens */
           .db-tech-row { display: flex; gap: .5rem; overflow-x: auto; white-space: nowrap; padding-bottom: .5rem; }
           .db-tech-row::-webkit-scrollbar { height: 6px; }
           .db-tech-row::-webkit-scrollbar-thumb { background: rgba(17,24,39,.2); border-radius: 999px; }
-          .db-intro-heading { margin-top: 1.75rem; text-align: center; color: var(--second-color); font-weight: var(--font-bold); font-size: 1.2rem; letter-spacing: .2px; }
+          .db-intro-heading { margin-top: 1.75rem; text-align: center; color: var(--text-color); font-weight: var(--font-bold); font-size: 1.2rem; letter-spacing: .2px; }
         </style>
     </head>
     <body>
-        <header class="l-header">
+        <!--===== SCROLL PROGRESS =====-->
+        <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+        <!--===== ANIMATED BACKGROUND =====-->
+        <div class="bg-scene" aria-hidden="true">
+            <span class="bg-orb bg-orb--1"></span>
+            <span class="bg-orb bg-orb--2"></span>
+            <span class="bg-orb bg-orb--3"></span>
+            <span class="bg-orb bg-orb--4"></span>
+            <canvas id="particles-canvas"></canvas>
+        </div>
+        <header class="l-header" id="header">
             <nav class="nav bd-grid">
                 <div>
-                    <a href="../index.html" class="nav__logo">Jacem</a>
+                    <a href="../index.html" class="nav__logo" aria-label="Jacem Ben Ahmed — Home">Jacem <span>Ben Ahmed</span></a>
                 </div>
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item"><a href="../index.html" class="nav__link">Home</a></li>
                         <li class="nav__item"><a href="../about.html" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="../skills.html" class="nav__link">Skills</a></li>
+                        <li class="nav__item"><a href="../index.html#skills" class="nav__link">Skills</a></li>
                         <li class="nav__item"><a href="../projects.html" class="nav__link">Projects</a></li>
                         <li class="nav__item"><a href="../contact.html" class="nav__link">Contact</a></li>
                     </ul>
                 </div>
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
+                <div class="nav__actions">
+                    <button class="nav__theme" id="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+                        <i class='bx bx-moon'></i>
+                    </button>
+                    <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Open menu">
+                        <i class='bx bx-menu'></i>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -183,14 +217,14 @@
             </section>
         </main>
         <footer class="footer">
-            <p class="footer__title">JACEM BEN AHMED</p>
+            <p class="footer__title">JACEM <span>BEN AHMED</span></p>
             <div class="footer__social">
-                <a href="#" class="footer__icon"><i class='bx bxl-linkedin' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-github' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+                <a href="https://www.linkedin.com/in/jacem-ben-ahmed" class="footer__icon" aria-label="LinkedIn Profile"><i class='bx bxl-linkedin' ></i></a>
+                <a href="https://github.com/JacemBenAhmed" class="footer__icon" aria-label="GitHub Profile"><i class='bx bxl-github' ></i></a>
             </div>
-            <p class="footer__copy">© Jacem Ben Ahmed. All rights reserved.</p>
+            <p class="footer__copy">&#169; Jacem Ben Ahmed — All rights reserved</p>
         </footer>
+        <button class="scroll-top" id="scroll-top" aria-label="Scroll back to top"><i class='bx bx-chevron-up'></i></button>
         <script src="https://unpkg.com/scrollreveal"></script>
         <script src="../assets/js/main.js"></script>
         <script>

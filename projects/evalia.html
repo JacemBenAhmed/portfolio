@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Evalia — an AI-powered enterprise evaluation and assessment platform. Multi-tenant SaaS combining a modern architecture, document-to-question AI generation, DevSecOps and a Capacitor mobile app.">
+
+        <link rel="stylesheet" href="../assets/css/styles.css">
+        <link rel="stylesheet" href="../assets/css/evalia.css">
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+
+        <script>
+            (function () {
+                try {
+                    var storedTheme = localStorage.getItem('portfolio-theme');
+                    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    var initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+                    document.documentElement.setAttribute('data-theme', initialTheme);
+                    document.documentElement.style.colorScheme = initialTheme;
+                } catch (error) {}
+            }());
+        </script>
+
+        <title>Evalia — AI Assessment Platform | Jacem</title>
+    </head>
+    <body class="ev-page">
+        <!--===== SCROLL PROGRESS =====-->
+        <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+        <!--===== ANIMATED BACKGROUND =====-->
+        <div class="bg-scene" aria-hidden="true">
+            <span class="bg-orb bg-orb--1"></span>
+            <span class="bg-orb bg-orb--2"></span>
+            <span class="bg-orb bg-orb--3"></span>
+            <span class="bg-orb bg-orb--4"></span>
+            <canvas id="particles-canvas"></canvas>
+        </div>
+
+        <!--===== HEADER =====-->
+        <header class="l-header" id="header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="../index.html" class="nav__logo" aria-label="Jacem Ben Ahmed — Home">Jacem <span>Ben Ahmed</span></a>
+                </div>
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="../index.html" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="../about.html" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="../index.html#skills" class="nav__link">Skills</a></li>
+                        <li class="nav__item"><a href="../projects.html" class="nav__link">Projects</a></li>
+                        <li class="nav__item"><a href="../contact.html" class="nav__link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="nav__actions">
+                    <button class="nav__theme" id="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+                        <i class='bx bx-moon'></i>
+                    </button>
+                    <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Open menu">
+                        <i class='bx bx-menu'></i>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+
+            <!--===== HERO =====-->
+            <section class="ev-hero ev-container" id="hero">
+                <div class="ev-hero__grid">
+                    <div class="ev-hero__content">
+                        <nav class="ev-breadcrumb" aria-label="Breadcrumb">
+                            <a href="../index.html">Home</a><i class='bx bx-chevron-right'></i>
+                            <a href="../projects.html">Projects</a><i class='bx bx-chevron-right'></i>
+                            <span>Evalia</span>
+                        </nav>
+
+                        <div class="ev-hero__brand">
+                            <span class="ev-hero__logo"><img src="../assets/img/evalia-imgs/logo.png" alt="Evalia logo"></span>
+                            <div>
+                                <p class="ev-hero__name">Eval<span>ia</span></p>
+                                <p class="ev-hero__kind">Final-Year Engineering Project</p>
+                            </div>
+                        </div>
+
+                        <h1 class="ev-hero__title">Evalia</h1>
+                        <p class="ev-hero__tagline">AI-powered <em>enterprise evaluation</em> platform</p>
+                        <p class="ev-hero__desc">
+                            An end-to-end SaaS for creating, managing, publishing and analyzing technical assessments —
+                            transforming documents into questions and candidate attempts into actionable insights.
+                        </p>
+
+                        <div class="ev-hero__tech">
+                            <span class="ev-chip">Vue.js 3</span>
+                            <span class="ev-chip">ASP.NET Core</span>
+                            <span class="ev-chip">FastAPI</span>
+                            <span class="ev-chip">PostgreSQL</span>
+                            <span class="ev-chip">ChromaDB</span>
+                            <span class="ev-chip">Docker</span>
+                            <span class="ev-chip">Capacitor</span>
+                        </div>
+
+                        <div class="ev-hero__actions">
+                            <a href="#video" class="button"><i class='bx bx-play-circle'></i> Watch Demo</a>
+                            <a href="#architecture" class="button button--outline">Explore Architecture</a>
+                            <a href="#gallery" class="button button--outline">Gallery</a>
+                        </div>
+
+                        <div class="ev-hero__stats">
+                            <div class="ev-hero__stat">
+                                <b><i class='bx bx-building-house'></i> Multi-tenant</b>
+                                <span>Isolated organization data with RBAC</span>
+                            </div>
+                            <div class="ev-hero__stat">
+                                <b><i class='bx bx-chip'></i> RAG pipeline</b>
+                                <span>Document → OCR → embeddings → LLM</span>
+                            </div>
+                            <div class="ev-hero__stat">
+                                <b><i class='bx bx-shield-alt-2'></i> DevSecOps</b>
+                                <span>Quality gates + security scanning</span>
+                            </div>
+                            <div class="ev-hero__stat">
+                                <b><i class='bx bx-mobile-alt'></i> Mobile</b>
+                                <span>Vue.js + Capacitor Android app</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ev-hero__media">
+                        <div class="ev-browser">
+                            <div class="ev-browser__bar">
+                                <span class="ev-browser__dot"></span>
+                                <span class="ev-browser__dot"></span>
+                                <span class="ev-browser__dot"></span>
+                                <span class="ev-browser__url">evalia.app/org/workspace</span>
+                            </div>
+                            <div class="ev-browser__body">
+                                <img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183622.png" alt="Evalia organization workspace interface" fetchpriority="high">
+                            </div>
+                        </div>
+                        <span class="ev-float ev-float--1"><i class='bx bx-chip'></i> 7-stage AI pipeline</span>
+                        <span class="ev-float ev-float--2"><i class='bx bx-lock-alt'></i> Secure · JWT + RBAC</span>
+                        <span class="ev-float ev-float--3"><i class='bx bx-check-shield'></i> DevSecOps CI/CD</span>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== SUB NAV =====-->
+            <nav class="ev-subnav" id="ev-subnav" aria-label="Page sections">
+                <div class="ev-container">
+                    <ul class="ev-subnav__list">
+                        <li><a class="ev-subnav__link active" href="#overview">Overview</a></li>
+                        <li><a class="ev-subnav__link" href="#features">Features</a></li>
+                        <li><a class="ev-subnav__link" href="#ai-pipeline">AI Pipeline</a></li>
+                        <li><a class="ev-subnav__link" href="#workflow">Workflow</a></li>
+                        <li><a class="ev-subnav__link" href="#architecture">Architecture</a></li>
+                        <li><a class="ev-subnav__link" href="#devsecops">DevSecOps</a></li>
+                        <li><a class="ev-subnav__link" href="#mobile">Mobile</a></li>
+                        <li><a class="ev-subnav__link" href="#gallery">Gallery</a></li>
+                        <li><a class="ev-subnav__link" href="#video">Video</a></li>
+                        <li><a class="ev-subnav__link" href="#challenges">Challenges</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!--===== OVERVIEW =====-->
+            <section class="ev-section" id="overview">
+                <div class="ev-container">
+                    <div class="ev-section__head ev-rv">
+                        <span class="ev-eyebrow">Overview</span>
+                        <h2 class="ev-h2">One platform for the whole <span>evaluation lifecycle</span></h2>
+                        <p class="ev-lead">Evalia was built to solve a real problem: assessment workflows are fragmented — questions scattered across documents, evaluations assembled by hand, results analyzed manually, and nothing that scales across organizations.</p>
+                    </div>
+
+                    <div class="ev-overview__grid">
+                        <div class="ev-rv">
+                            <div class="ev-problem-list">
+                                <div class="ev-problem">
+                                    <span class="ev-problem__icon"><i class='bx bx-time-five'></i></span>
+                                    <div>
+                                        <p class="ev-problem__title">Manually built assessments</p>
+                                        <p class="ev-problem__text">Creating evaluations from existing training material and knowledge bases is slow, repetitive and error-prone.</p>
+                                    </div>
+                                </div>
+                                <div class="ev-problem">
+                                    <span class="ev-problem__icon"><i class='bx bx-pie-chart-alt-2'></i></span>
+                                    <div>
+                                        <p class="ev-problem__title">Fragmented results</p>
+                                        <p class="ev-problem__text">Scores live in spreadsheets; performance insights and recommendations rarely surface back to the organization.</p>
+                                    </div>
+                                </div>
+                                <div class="ev-problem">
+                                    <span class="ev-problem__icon"><i class='bx bx-layer'></i></span>
+                                    <div>
+                                        <p class="ev-problem__title">No multi-tenant foundation</p>
+                                        <p class="ev-problem__text">Existing tools don't isolate data per organization or support role-based access across a growing client base.</p>
+                                    </div>
+                                </div>
+                                <div class="ev-problem">
+                                    <span class="ev-problem__icon"><i class='bx bx-shield-x'></i></span>
+                                    <div>
+                                        <p class="ev-problem__title">Unreliable online exams</p>
+                                        <p class="ev-problem__text">Without anti-cheat controls, remote assessments can't be trusted for formal evaluation scenarios.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ev-lifecycle ev-rv">
+                            <p class="ev-lifecycle__title">The complete Evalia lifecycle</p>
+                            <div class="ev-lifecycle__item"><i class='bx bx-edit-alt'></i><span>Question creation</span><i class='bx bx-chevron-right'></i></div>
+                            <div class="ev-lifecycle__item"><i class='bx bx-library'></i><span>Question bank</span><i class='bx bx-chevron-right'></i></div>
+                            <div class="ev-lifecycle__item"><i class='bx bx-chip'></i><span>AI-assisted generation</span><i class='bx bx-chevron-right'></i></div>
+                            <div class="ev-lifecycle__item"><i class='bx bx-task'></i><span>Evaluation session</span><i class='bx bx-chevron-right'></i></div>
+                            <div class="ev-lifecycle__item"><i class='bx bx-user-check'></i><span>Candidate assessment</span><i class='bx bx-chevron-right'></i></div>
+                            <div class="ev-lifecycle__item"><i class='bx bx-bar-chart-alt-2'></i><span>Results &amp; reports</span><i class='bx bx-chevron-right'></i></div>
+                            <div class="ev-lifecycle__item"><i class='bx bx-bulb'></i><span>Recommendations</span><i class='bx bx-chevron-right'></i></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== KEY FEATURES =====-->
+            <section class="ev-section ev-section--alt" id="features">
+                <div class="ev-container">
+                    <div class="ev-section__head ev-rv">
+                        <span class="ev-eyebrow">Key Features</span>
+                        <h2 class="ev-h2">Built like an <span>enterprise product</span></h2>
+                        <p class="ev-lead">Eight capability areas that together form a serious, production-minded assessment ecosystem.</p>
+                    </div>
+
+                    <div class="ev-feat-grid">
+                        <article class="ev-feat ev-rv">
+                            <span class="ev-feat__icon"><i class='bx bx-building-house'></i></span>
+                            <h3 class="ev-feat__title">Multi-tenant Enterprise Architecture</h3>
+                            <p class="ev-feat__text">Organizations, users and roles with full authentication, authorization, RBAC and secure org-level data isolation.</p>
+                        </article>
+                        <article class="ev-feat ev-rv">
+                            <span class="ev-feat__icon"><i class='bx bx-library'></i></span>
+                            <h3 class="ev-feat__title">Intelligent Question Bank</h3>
+                            <p class="ev-feat__text">Questions organized by themes, sub-themes, difficulty and prerequisites — QCU, QCM and True/False formats.</p>
+                        </article>
+                        <article class="ev-feat ev-rv">
+                            <span class="ev-feat__icon"><i class='bx bx-chip'></i></span>
+                            <h3 class="ev-feat__title">AI-Powered Question Generation</h3>
+                            <p class="ev-feat__text">Upload a document, and the AI pipeline turns it into relevant, ready-to-use assessment questions.</p>
+                        </article>
+                        <article class="ev-feat ev-rv">
+                            <span class="ev-feat__icon"><i class='bx bx-task'></i></span>
+                            <h3 class="ev-feat__title">Evaluation Sessions</h3>
+                            <p class="ev-feat__text">Assemble sessions from the bank, configure parameters and publish through a public link for candidates.</p>
+                        </article>
+                        <article class="ev-feat ev-rv">
+                            <span class="ev-feat__icon"><i class='bx bx-bar-chart-alt-2'></i></span>
+                            <h3 class="ev-feat__title">Candidate Dashboard &amp; Results</h3>
+                            <p class="ev-feat__text">Scores, performance, question-level breakdowns and candidate progression across evaluations.</p>
+                        </article>
+                        <article class="ev-feat ev-rv">
+                            <span class="ev-feat__icon"><i class='bx bx-bulb'></i></span>
+                            <h3 class="ev-feat__title">AI-Assisted Recommendations</h3>
+                            <p class="ev-feat__text">AI analysis of results that surfaces useful, actionable recommendations from performance data.</p>
+                        </article>
+                        <article class="ev-feat ev-rv">
+                            <span class="ev-feat__icon"><i class='bx bx-shield-alt-2'></i></span>
+                            <h3 class="ev-feat__title">Anti-Cheat Mechanisms</h3>
+                            <p class="ev-feat__text">Detects page-leave and tab-switch events and triggers configurable behavior, up to attempt invalidation.</p>
+                        </article>
+                        <article class="ev-feat ev-rv">
+                            <span class="ev-feat__icon"><i class='bx bx-mobile-alt'></i></span>
+                            <h3 class="ev-feat__title">Mobile Application</h3>
+                            <p class="ev-feat__text">A Vue.js + Capacitor app extending the evaluation experience to mobile with native Android integration.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== AI PIPELINE =====-->
+            <section class="ev-section" id="ai-pipeline">
+                <div class="ev-container">
+                    <div class="ev-section__head ev-rv">
+                        <span class="ev-eyebrow">AI Pipeline</span>
+                        <h2 class="ev-h2">From document to <span>generated questions</span></h2>
+                        <p class="ev-lead">A retrieval-augmented generation pipeline transforms existing documentation and training material into assessment content.</p>
+                    </div>
+
+                    <div class="ev-steps ev-steps--7 ev-rv" data-steps>
+                        <div class="ev-step"><span class="ev-step__num"><i class='bx bx-file'></i></span><p class="ev-step__label">Document</p><p class="ev-step__sub">PDF · DOCX · text</p></div>
+                        <div class="ev-step ev-step--ai"><span class="ev-step__num"><i class='bx bx-scan'></i></span><p class="ev-step__label">OCR / Text Extraction</p><p class="ev-step__sub">scanned &amp; digital</p></div>
+                        <div class="ev-step ev-step--ai"><span class="ev-step__num"><i class='bx bx-grid-alt'></i></span><p class="ev-step__label">Chunking</p><p class="ev-step__sub">semantic segments</p></div>
+                        <div class="ev-step ev-step--ai"><span class="ev-step__num"><i class='bx bx-shape-square'></i></span><p class="ev-step__label">Embeddings</p><p class="ev-step__sub">all-MiniLM-L6-v2</p></div>
+                        <div class="ev-step ev-step--ai"><span class="ev-step__num"><i class='bx bx-database'></i></span><p class="ev-step__label">Vector DB</p><p class="ev-step__sub">ChromaDB</p></div>
+                        <div class="ev-step ev-step--ai"><span class="ev-step__num"><i class='bx bx-bot'></i></span><p class="ev-step__label">LLM</p><p class="ev-step__sub">context-aware</p></div>
+                        <div class="ev-step"><span class="ev-step__num"><i class='bx bx-list-check'></i></span><p class="ev-step__label">Generated Questions</p><p class="ev-step__sub">review &amp; publish</p></div>
+                    </div>
+
+                    <div class="ev-split">
+                        <div class="ev-card-media ev-rv">
+                            <img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183740.png" alt="AI question generation interface in Evalia" loading="lazy">
+                            <p class="ev-card-media__cap"><b>AI generation</b> — upload a document and let the pipeline produce relevant questions for review before they enter the bank.</p>
+                        </div>
+                        <div class="ev-rv">
+                            <p class="ev-lead" style="margin-bottom:1rem;">
+                                Documents pass through OCR and text extraction, are split into semantic chunks, and converted into
+                                vector embeddings stored in ChromaDB. The LLM then retrieves the most relevant content and generates
+                                questions grounded in the source material.
+                            </p>
+                            <div class="ev-note"><b>Embeddings</b> — semantic vectors are produced with Sentence Transformers' <b>all-MiniLM-L6-v2</b> model and persisted in <b>ChromaDB</b> for fast, context-aware retrieval during generation.</div>
+                            <div class="ev-note" style="border-color: rgba(124,58,237,.25); background: var(--ev-primary-soft);"><b>Why it matters</b> — organizations can transform training material, technical documentation and knowledge bases into scalable assessment content in minutes instead of days.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== EVALUATION WORKFLOW =====-->
+            <section class="ev-section ev-section--alt" id="workflow">
+                <div class="ev-container">
+                    <div class="ev-section__head ev-rv">
+                        <span class="ev-eyebrow">Evaluation Workflow</span>
+                        <h2 class="ev-h2">Six steps, <span>one smooth journey</span></h2>
+                        <p class="ev-lead">From authoring questions to delivering reports — the complete assessment flow lives inside a single platform.</p>
+                    </div>
+
+                    <div class="ev-steps ev-steps--6 ev-rv" data-steps>
+                        <div class="ev-step"><span class="ev-step__num">1</span><p class="ev-step__label">Create Questions</p><p class="ev-step__sub">manual or AI-assisted</p></div>
+                        <div class="ev-step"><span class="ev-step__num">2</span><p class="ev-step__label">Build Evaluation</p><p class="ev-step__sub">from the question bank</p></div>
+                        <div class="ev-step"><span class="ev-step__num">3</span><p class="ev-step__label">Publish</p><p class="ev-step__sub">shareable public link</p></div>
+                        <div class="ev-step"><span class="ev-step__num">4</span><p class="ev-step__label">Candidate Takes Test</p><p class="ev-step__sub">with anti-cheat</p></div>
+                        <div class="ev-step"><span class="ev-step__num">5</span><p class="ev-step__label">Results</p><p class="ev-step__sub">scores &amp; performance</p></div>
+                        <div class="ev-step"><span class="ev-step__num">6</span><p class="ev-step__label">Reports</p><p class="ev-step__sub">insights &amp; recommendations</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== ARCHITECTURE =====-->
+            <section class="ev-section" id="architecture">
+                <div class="ev-container">
+                    <div class="ev-section__head ev-rv">
+                        <span class="ev-eyebrow">Architecture</span>
+                        <h2 class="ev-h2">Modern, <span>distributed by design</span></h2>
+                        <p class="ev-lead">Hover any component to see how it fits. Three views — web application, AI service and containerized infrastructure.</p>
+                    </div>
+
+                    <div class="ev-rv" style="text-align:center;">
+                        <div class="ev-tabs" role="tablist" aria-label="Architecture views">
+                            <button class="ev-tab-btn active" data-tab="arch-web" role="tab" aria-selected="true">Web Application</button>
+                            <button class="ev-tab-btn" data-tab="arch-ai" role="tab" aria-selected="false">AI Service</button>
+                            <button class="ev-tab-btn" data-tab="arch-infra" role="tab" aria-selected="false">Containerized Infra</button>
+                        </div>
+                    </div>
+
+                    <div class="ev-rv">
+                        <!-- WEB -->
+                        <div class="ev-tabpanel active" id="arch-web" role="tabpanel">
+                            <div class="ev-diagram">
+                                <div class="ev-diagram__flow">
+                                    <div class="ev-node" tabindex="0" data-detail="<strong>Frontend</strong> — Vue.js 3 single-page application with Pinia state management, Vue Router navigation and Tailwind CSS. Consumes the REST API with typed service layers.">
+                                        <i class='bx bxl-vuejs'></i>
+                                        <span>Vue.js 3<small class="ev-node__sub">SPA · Pinia · Vue Router</small></span>
+                                    </div>
+                                    <i class='bx bx-right-arrow-alt ev-arrow'></i>
+                                    <div class="ev-node ev-node--accent" tabindex="0" data-detail="<strong>Backend</strong> — ASP.NET Core REST API built with Clean Architecture and a modular monolith approach. Handles authentication, RBAC, tenant isolation, evaluation logic and result analytics through Entity Framework Core.">
+                                        <i class='bx bxl-c-sharp'></i>
+                                        <span>ASP.NET Core API<small class="ev-node__sub">Clean Architecture · Modular monolith</small></span>
+                                    </div>
+                                    <i class='bx bx-right-arrow-alt ev-arrow'></i>
+                                    <div class="ev-node" tabindex="0" data-detail="<strong>Database</strong> — PostgreSQL stores organizations, users, roles, the question bank, evaluation sessions, attempts and results, scoped per tenant for strict data isolation.">
+                                        <i class='bx bxl-postgresql'></i>
+                                        <span>PostgreSQL<small class="ev-node__sub">Tenant-scoped data</small></span>
+                                    </div>
+                                </div>
+                                <div class="ev-diagram__detail" data-detail-panel>
+                                    The web application is a Vue.js SPA talking to an ASP.NET Core REST API over HTTPS. The API enforces authentication, authorization and role-based access, keeps each organization's data isolated, and persists everything in PostgreSQL.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI -->
+                        <div class="ev-tabpanel" id="arch-ai" role="tabpanel">
+                            <div class="ev-diagram">
+                                <div class="ev-diagram__flow">
+                                    <div class="ev-node" tabindex="0" data-detail="<strong>Document</strong> — users upload PDF, DOCX or plain-text documents that become the source material for question generation.">
+                                        <i class='bx bx-file'></i>
+                                        <span>Document</span>
+                                    </div>
+                                    <i class='bx bx-right-arrow-alt ev-arrow'></i>
+                                    <div class="ev-node ev-node--accent" tabindex="0" data-detail="<strong>FastAPI</strong> — the Python AI service exposes asynchronous endpoints for document processing and question generation, decoupled from the .NET backend.">
+                                        <i class='bx bxl-python'></i>
+                                        <span>FastAPI AI Service</span>
+                                    </div>
+                                    <i class='bx bx-right-arrow-alt ev-arrow'></i>
+                                    <div class="ev-node ev-node--ai" tabindex="0" data-detail="<strong>OCR / Text Extraction</strong> — extracts and normalizes text from both scanned and digital documents, preserving usable content for later stages.">
+                                        <i class='bx bx-scan'></i>
+                                        <span>OCR / Text Extraction</span>
+                                    </div>
+                                    <i class='bx bx-right-arrow-alt ev-arrow'></i>
+                                    <div class="ev-node ev-node--ai" tabindex="0" data-detail="<strong>Chunking</strong> — extracted text is split into coherent semantic chunks that stay small enough for precise retrieval and LLM context.">
+                                        <i class='bx bx-grid-alt'></i>
+                                        <span>Chunking</span>
+                                    </div>
+                                    <i class='bx bx-right-arrow-alt ev-arrow'></i>
+                                    <div class="ev-node ev-node--ai" tabindex="0" data-detail="<strong>Embeddings</strong> — chunks are converted into dense vectors using the all-MiniLM-L6-v2 sentence transformer model.">
+                                        <i class='bx bx-shape-square'></i>
+                                        <span>Embeddings</span>
+                                    </div>
+                                    <i class='bx bx-right-arrow-alt ev-arrow'></i>
+                                    <div class="ev-node ev-node--ai" tabindex="0" data-detail="<strong>ChromaDB</strong> — the vector database stores embeddings and enables fast semantic search so the LLM only receives the most relevant chunks.">
+                                        <i class='bx bx-database'></i>
+                                        <span>ChromaDB</span>
+                                    </div>
+                                    <i class='bx bx-right-arrow-alt ev-arrow'></i>
+                                    <div class="ev-node ev-node--ai" tabindex="0" data-detail="<strong>LLM</strong> — generates questions grounded in the retrieved context, plus result analysis and recommendations.">
+                                        <i class='bx bx-bot'></i>
+                                        <span>LLM</span>
+                                    </div>
+                                    <i class='bx bx-right-arrow-alt ev-arrow'></i>
+                                    <div class="ev-node" tabindex="0" data-detail="<strong>Output</strong> — generated questions are written back to the platform's question bank for review, and recommendation output supports result analysis.">
+                                        <i class='bx bx-list-check'></i>
+                                        <span>Questions &amp; Recommendations</span>
+                                    </div>
+                                </div>
+                                <div class="ev-diagram__detail" data-detail-panel>
+                                    The AI pipeline runs in a dedicated Python FastAPI service: documents are OCR-processed, chunked, embedded with all-MiniLM-L6-v2 and indexed in ChromaDB, then a vector-backed retrieval step feeds the LLM to produce context-aware questions and recommendations.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- INFRA -->
+                        <div class="ev-tabpanel" id="arch-infra" role="tabpanel">
+                            <div class="ev-diagram">
+                                <div class="ev-diagram__flow">
+                                    <div class="ev-zone">
+                                        <p class="ev-zone__title"><i class='bx bxl-docker'></i> Application stack — Docker Compose</p>
+                                        <div class="ev-zone__body">
+                                            <div class="ev-node" tabindex="0" data-detail="<strong>Reverse proxy</strong> — Nginx terminates TLS, routes traffic to the web and API services, and serves the built frontend."><i class='bx bx-globe'></i>Nginx</div>
+                                            <div class="ev-node" tabindex="0" data-detail="<strong>Web</strong> — the Vue.js frontend served as static assets, containerized and reverse-proxied by Nginx."><i class='bx bxl-vuejs'></i>Vue.js Web</div>
+                                            <div class="ev-node" tabindex="0" data-detail="<strong>API</strong> — the ASP.NET Core backend container exposing the REST API to the frontend."><i class='bx bxl-c-sharp'></i>ASP.NET API</div>
+                                            <div class="ev-node" tabindex="0" data-detail="<strong>AI</strong> — the Python FastAPI service container handling document processing and generation."><i class='bx bxl-python'></i>FastAPI AI</div>
+                                            <div class="ev-node" tabindex="0" data-detail="<strong>PostgreSQL</strong> — relational storage for the platform's domain data."><i class='bx bxl-postgresql'></i>PostgreSQL</div>
+                                            <div class="ev-node" tabindex="0" data-detail="<strong>ChromaDB</strong> — vector storage powering semantic search for the AI service."><i class='bx bx-database'></i>ChromaDB</div>
+                                        </div>
+                                    </div>
+                                    <i class='bx bx-down-arrow-alt ev-arrow'></i>
+                                    <div class="ev-zone">
+                                        <p class="ev-zone__title"><i class='bx bxl-github'></i> Delivery pipeline</p>
+                                        <div class="ev-zone__body">
+                                            <div class="ev-node" tabindex="0" data-detail="<strong>CI/CD</strong> — GitHub Actions runs quality, security and build stages on every push, pushing images to the container registry."><i class='bx bx-revision'></i>GitHub Actions</div>
+                                            <div class="ev-node" tabindex="0" data-detail="<strong>Registry</strong> — built container images are published to GitHub Container Registry."><i class='bx bx-package'></i>GHCR</div>
+                                            <div class="ev-node" tabindex="0" data-detail="<strong>Deploy</strong> — the release job deploys the full stack to an Ubuntu VPS via Docker Compose."><i class='bx bxl-ubuntu'></i>Ubuntu VPS</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ev-diagram__detail" data-detail-panel>
+                                    Every component — frontend, API, AI service, databases and the reverse proxy — is containerized. Docker Compose orchestrates the stack on an Ubuntu VPS, while GitHub Actions builds images, publishes them to GitHub Container Registry and handles deployment automatically.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== DEVSECOPS =====-->
+            <section class="ev-section ev-section--alt" id="devsecops">
+                <div class="ev-container">
+                    <div class="ev-section__head ev-rv">
+                        <span class="ev-eyebrow">DevSecOps</span>
+                        <h2 class="ev-h2">Automated <span>DevSecOps pipeline</span></h2>
+                        <p class="ev-lead">Security isn't an afterthought — it's enforced at every stage of a fully automated delivery pipeline.</p>
+                    </div>
+
+                    <div class="ev-steps ev-steps--6 ev-rv" data-steps>
+                        <div class="ev-step"><span class="ev-step__num"><i class='bx bx-code-alt'></i></span><p class="ev-step__label">Code</p><p class="ev-step__sub">feature branch → PR</p></div>
+                        <div class="ev-step"><span class="ev-step__num"><i class='bx bx-check-shield'></i></span><p class="ev-step__label">Quality Checks</p><p class="ev-step__sub">CommitLint · analysis</p></div>
+                        <div class="ev-step"><span class="ev-step__num"><i class='bx bx-shield-alt-2'></i></span><p class="ev-step__label">Security Scanning</p><p class="ev-step__sub">secrets · deps · SAST</p></div>
+                        <div class="ev-step"><span class="ev-step__num"><i class='bx bxl-docker'></i></span><p class="ev-step__label">Docker Build</p><p class="ev-step__sub">image scanning</p></div>
+                        <div class="ev-step"><span class="ev-step__num"><i class='bx bx-package'></i></span><p class="ev-step__label">Container Registry</p><p class="ev-step__sub">GitHub Container Registry</p></div>
+                        <div class="ev-step"><span class="ev-step__num"><i class='bx bx-server'></i></span><p class="ev-step__label">Deployment</p><p class="ev-step__sub">Ubuntu VPS · Docker Compose</p></div>
+                    </div>
+
+                    <div class="ev-sec-tools ev-rv">
+                        <span class="ev-sec-tool">Gitleaks</span>
+                        <span class="ev-sec-tool">Trivy</span>
+                        <span class="ev-sec-tool">Snyk</span>
+                        <span class="ev-sec-tool">SonarQube</span>
+                        <span class="ev-sec-tool">OWASP ZAP</span>
+                        <span class="ev-sec-tool">npm audit</span>
+                        <span class="ev-sec-tool">CommitLint</span>
+                    </div>
+
+                    <div class="ev-sec-media">
+                        <div class="ev-card-media ev-rv">
+                            <img src="../assets/img/evalia-imgs/pipeline.png" alt="Evalia CI/CD pipeline diagram" loading="lazy">
+                            <p class="ev-card-media__cap"><b>Pipeline design</b> — code flows through quality checks, security scans and container builds before reaching production.</p>
+                        </div>
+                        <div class="ev-card-media ev-rv">
+                            <img src="../assets/img/evalia-imgs/github_actions.png" alt="GitHub Actions workflow for Evalia" loading="lazy">
+                            <p class="ev-card-media__cap"><b>GitHub Actions</b> — automated code quality, secret detection, dependency checks, vulnerability scanning, image scanning and deployment.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== MOBILE =====-->
+            <section class="ev-section" id="mobile">
+                <div class="ev-container">
+                    <div class="ev-section__head ev-rv">
+                        <span class="ev-eyebrow">Mobile Application</span>
+                        <h2 class="ev-h2">Evaluations, <span>on the go</span></h2>
+                        <p class="ev-lead">A Capacitor mobile app extends the assessment experience to Android while reusing the existing Vue.js stack.</p>
+                    </div>
+
+                    <div class="ev-mobile__grid">
+                        <div class="ev-rv" style="display:flex; justify-content:center;">
+                            <div class="ev-phone">
+                                <span class="ev-phone__notch"></span>
+                                <img class="ev-phone__img" src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20184123.png" alt="Evalia mobile application screenshot" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="ev-rv">
+                            <p class="ev-lead">
+                                Evalia's mobile experience is built with <strong>Vue.js and Capacitor</strong>, wrapping the existing web
+                                technology stack into a native-feeling Android application. Capacitor plugins bridge the JavaScript
+                                layer with native mobile capabilities, so candidates can complete assessments wherever they are.
+                            </p>
+                            <div class="ev-mobile__list">
+                                <div class="ev-mobile__item">
+                                    <i class='bx bxl-vuejs'></i>
+                                    <div>
+                                        <b>Reused web stack</b>
+                                        <p>Vue.js components and logic are packaged for mobile — one codebase, two platforms.</p>
+                                    </div>
+                                </div>
+                                <div class="ev-mobile__item">
+                                    <i class='bx bxl-android'></i>
+                                    <div>
+                                        <b>Native Android bridge</b>
+                                        <p>Capacitor plugins integrate native capabilities with the Vue.js application layer.</p>
+                                    </div>
+                                </div>
+                                <div class="ev-mobile__item">
+                                    <i class='bx bx-chevron-right-square'></i>
+                                    <div>
+                                        <b>Same secure flow</b>
+                                        <p>Authentication, anti-cheat detection and result submission behave identically to the web app.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="ev-mobile__badge"><i class='bx bxl-android'></i> Vue.js + Capacitor</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== GALLERY =====-->
+            <section class="ev-section ev-section--alt" id="gallery">
+                <div class="ev-container">
+                    <div class="ev-section__head ev-rv">
+                        <span class="ev-eyebrow">Gallery</span>
+                        <h2 class="ev-h2">Inside the <span>product</span></h2>
+                        <p class="ev-lead">A walkthrough of the platform — click any screenshot to view it full size.</p>
+                    </div>
+
+                    <div class="ev-gallery">
+                        <figure class="ev-gallery__item ev-rv" data-lb data-img="Capture%20d%27%C3%A9cran%202026-08-13%20183422.png" data-cap="<b>Login</b> — secure sign-in with JWT-based authentication.">
+                            <div class="ev-gallery__media"><img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183422.png" alt="Evalia login screen" loading="lazy"></div>
+                            <figcaption class="ev-gallery__cap"><b>Login</b> — secure sign-in with JWT-based authentication.</figcaption>
+                        </figure>
+                        <figure class="ev-gallery__item ev-rv" data-lb data-img="Capture%20d%27%C3%A9cran%202026-08-13%20183500.png" data-cap="<b>Register</b> — self-service account creation for organizations.">
+                            <div class="ev-gallery__media"><img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183500.png" alt="Evalia registration screen" loading="lazy"></div>
+                            <figcaption class="ev-gallery__cap"><b>Register</b> — self-service account creation for organizations.</figcaption>
+                        </figure>
+                        <figure class="ev-gallery__item ev-rv" data-lb data-img="Capture%20d%27%C3%A9cran%202026-08-13%20183546.png" data-cap="<b>Organization setup</b> — create and configure your workspace.">
+                            <div class="ev-gallery__media"><img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183546.png" alt="Evalia organization setup screen" loading="lazy"></div>
+                            <figcaption class="ev-gallery__cap"><b>Organization setup</b> — create and configure your workspace.</figcaption>
+                        </figure>
+                        <figure class="ev-gallery__item ev-rv" data-lb data-img="Capture%20d%27%C3%A9cran%202026-08-13%20183622.png" data-cap="<b>Workspace</b> — organization home with navigation across the platform.">
+                            <div class="ev-gallery__media"><img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183622.png" alt="Evalia organization workspace" loading="lazy"></div>
+                            <figcaption class="ev-gallery__cap"><b>Workspace</b> — organization home with navigation across the platform.</figcaption>
+                        </figure>
+                        <figure class="ev-gallery__item ev-rv" data-lb data-img="Capture%20d%27%C3%A9cran%202026-08-13%20183641.png" data-cap="<b>Question bank</b> — questions organized by themes, sub-themes and difficulty.">
+                            <div class="ev-gallery__media"><img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183641.png" alt="Evalia question bank" loading="lazy"></div>
+                            <figcaption class="ev-gallery__cap"><b>Question bank</b> — questions organized by themes, sub-themes and difficulty.</figcaption>
+                        </figure>
+                        <figure class="ev-gallery__item ev-rv" data-lb data-img="Capture%20d%27%C3%A9cran%202026-08-13%20183712.png" data-cap="<b>Create question</b> — manual authoring with QCU, QCM and True/False formats.">
+                            <div class="ev-gallery__media"><img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183712.png" alt="Evalia question creation" loading="lazy"></div>
+                            <figcaption class="ev-gallery__cap"><b>Create question</b> — manual authoring with QCU, QCM and True/False formats.</figcaption>
+                        </figure>
+                        <figure class="ev-gallery__item ev-rv" data-lb data-img="Capture%20d%27%C3%A9cran%202026-08-13%20183740.png" data-cap="<b>AI generation</b> — upload a document and generate questions from its content.">
+                            <div class="ev-gallery__media"><img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183740.png" alt="Evalia AI question generation" loading="lazy"></div>
+                            <figcaption class="ev-gallery__cap"><b>AI generation</b> — upload a document and generate questions from its content.</figcaption>
+                        </figure>
+                        <figure class="ev-gallery__item ev-rv" data-lb data-img="Capture%20d%27%C3%A9cran%202026-08-13%20183823.png" data-cap="<b>Evaluation session</b> — configure a new session from the question bank.">
+                            <div class="ev-gallery__media"><img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183823.png" alt="Evalia evaluation session configuration" loading="lazy"></div>
+                            <figcaption class="ev-gallery__cap"><b>Evaluation session</b> — configure a new session from the question bank.</figcaption>
+                        </figure>
+                        <figure class="ev-gallery__item ev-rv" data-lb data-img="Capture%20d%27%C3%A9cran%202026-08-13%20183911.png" data-cap="<b>Publish</b> — evaluations shared with candidates through a public link.">
+                            <div class="ev-gallery__media"><img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183911.png" alt="Evalia published evaluation link" loading="lazy"></div>
+                            <figcaption class="ev-gallery__cap"><b>Publish</b> — evaluations shared with candidates through a public link.</figcaption>
+                        </figure>
+                        <figure class="ev-gallery__item ev-rv" data-lb data-img="Capture%20d%27%C3%A9cran%202026-08-13%20183945.png" data-cap="<b>Candidate assessment</b> — the candidate interface with anti-cheat protection.">
+                            <div class="ev-gallery__media"><img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183945.png" alt="Evalia candidate assessment interface" loading="lazy"></div>
+                            <figcaption class="ev-gallery__cap"><b>Candidate assessment</b> — the candidate interface with anti-cheat protection.</figcaption>
+                        </figure>
+                        <figure class="ev-gallery__item ev-rv" data-lb data-img="Capture%20d%27%C3%A9cran%202026-08-13%20184016.png" data-cap="<b>Results</b> — candidate scores and performance breakdowns.">
+                            <div class="ev-gallery__media"><img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20184016.png" alt="Evalia candidate results" loading="lazy"></div>
+                            <figcaption class="ev-gallery__cap"><b>Results</b> — candidate scores and performance breakdowns.</figcaption>
+                        </figure>
+                        <figure class="ev-gallery__item ev-rv" data-lb data-img="Capture%20d%27%C3%A9cran%202026-08-13%20184043.png" data-cap="<b>Reports</b> — detailed reports and AI-assisted recommendations.">
+                            <div class="ev-gallery__media"><img src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20184043.png" alt="Evalia reports and recommendations" loading="lazy"></div>
+                            <figcaption class="ev-gallery__cap"><b>Reports</b> — detailed reports and AI-assisted recommendations.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== DEMO VIDEO =====-->
+            <section class="ev-section" id="video">
+                <div class="ev-container">
+                    <div class="ev-section__head ev-rv">
+                        <span class="ev-eyebrow">Demo Video</span>
+                        <h2 class="ev-h2">See Evalia <span>in action</span></h2>
+                        <p class="ev-lead">A complete walkthrough of the platform — from organization setup to AI-generated questions, evaluations and reports.</p>
+                    </div>
+
+                    <div class="ev-video ev-rv" id="video-box">
+                        <img class="ev-video__poster" src="../assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183945.png" alt="Evalia demo video preview" loading="lazy">
+                        <button class="ev-video__play" id="video-play" type="button" aria-label="Watch the Evalia demo video on OneDrive">
+                            <span class="ev-video__play-btn"><i class='bx bx-play'></i></span>
+                            <span class="ev-video__label">Watch the full demo · opens in OneDrive</span>
+                        </button>
+                    </div>
+                    <p class="ev-video__link ev-rv">Video hosted on OneDrive — <a href="https://1drv.ms/v/c/4bd71eedd4b9ff37/IQB9EP-RhS6KS5z3XKHmH8WAAQdJlqSwEnt_r0FRbvvrx80" target="_blank" rel="noopener noreferrer">open it in a new tab <i class='bx bx-link-external'></i></a> if the player doesn't load.</p>
+                </div>
+            </section>
+
+            <!--===== TECHNICAL CHALLENGES =====-->
+            <section class="ev-section ev-section--alt" id="challenges">
+                <div class="ev-container">
+                    <div class="ev-section__head ev-rv">
+                        <span class="ev-eyebrow">Technical Challenges</span>
+                        <h2 class="ev-h2">Hard problems, <span>pragmatic solutions</span></h2>
+                        <p class="ev-lead">The engineering decisions that made Evalia feel like a real product rather than a demo.</p>
+                    </div>
+
+                    <div class="ev-chal-grid">
+                        <article class="ev-chal ev-rv">
+                            <div class="ev-chal__head">
+                                <span class="ev-chal__icon"><i class='bx bx-building-house'></i></span>
+                                <h3 class="ev-chal__title">Multi-tenancy &amp; data isolation</h3>
+                            </div>
+                            <p class="ev-chal__row ev-chal__row--problem"><b>The challenge</b>Multiple organizations on one system, each needing guaranteed data isolation.</p>
+                            <p class="ev-chal__row ev-chal__row--solution"><b>The solution</b>Tenant scoping enforced at every data access layer, combined with organization-aware RBAC across the whole API.</p>
+                        </article>
+
+                        <article class="ev-chal ev-rv">
+                            <div class="ev-chal__head">
+                                <span class="ev-chal__icon"><i class='bx bx-chip'></i></span>
+                                <h3 class="ev-chal__title">AI document processing</h3>
+                            </div>
+                            <p class="ev-chal__row ev-chal__row--problem"><b>The challenge</b>Turning arbitrary documents — scanned and digital — into structured, reliable assessment content.</p>
+                            <p class="ev-chal__row ev-chal__row--solution"><b>The solution</b>An orchestrated pipeline: OCR, text extraction, chunking, embedding, retrieval and LLM generation, with results surfaced for human review.</p>
+                        </article>
+
+                        <article class="ev-chal ev-rv">
+                            <div class="ev-chal__head">
+                                <span class="ev-chal__icon"><i class='bx bx-shape-square'></i></span>
+                                <h3 class="ev-chal__title">Semantic search &amp; embeddings</h3>
+                            </div>
+                            <p class="ev-chal__row ev-chal__row--problem"><b>The challenge</b>The LLM needed the right content — not just the largest chunk — to generate good questions.</p>
+                            <p class="ev-chal__row ev-chal__row--solution"><b>The solution</b>Vector search with all-MiniLM-L6-v2 embeddings and ChromaDB so generation is grounded in the most relevant source material.</p>
+                        </article>
+
+                        <article class="ev-chal ev-rv">
+                            <div class="ev-chal__head">
+                                <span class="ev-chal__icon"><i class='bx bx-database'></i></span>
+                                <h3 class="ev-chal__title">Vector database integration</h3>
+                            </div>
+                            <p class="ev-chal__row ev-chal__row--problem"><b>The challenge</b>Keeping vector data consistent with the platform's relational domain data.</p>
+                            <p class="ev-chal__row ev-chal__row--solution"><b>The solution</b>A dedicated FastAPI service owns the ChromaDB lifecycle, keeping collections aligned with the .NET backend through clear API contracts.</p>
+                        </article>
+
+                        <article class="ev-chal ev-rv">
+                            <div class="ev-chal__head">
+                                <span class="ev-chal__icon"><i class='bx bx-lock-alt'></i></span>
+                                <h3 class="ev-chal__title">Secure authentication &amp; authorization</h3>
+                            </div>
+                            <p class="ev-chal__row ev-chal__row--problem"><b>The challenge</b>Different roles — admins, trainers, candidates — accessing different parts of the platform.</p>
+                            <p class="ev-chal__row ev-chal__row--solution"><b>The solution</b>Token-based authentication with role-based access control and org-level scoping enforced by the API for every request.</p>
+                        </article>
+
+                        <article class="ev-chal ev-rv">
+                            <div class="ev-chal__head">
+                                <span class="ev-chal__icon"><i class='bx bx-shield-alt-2'></i></span>
+                                <h3 class="ev-chal__title">Anti-cheat mechanisms</h3>
+                            </div>
+                            <p class="ev-chal__row ev-chal__row--problem"><b>The challenge</b>Making remote, unsupervised assessments trustworthy enough for formal use.</p>
+                            <p class="ev-chal__row ev-chal__row--solution"><b>The solution</b>Visibility-change and tab-switch detection that triggers configurable anti-cheat behavior, including automatic attempt invalidation.</p>
+                        </article>
+
+                        <article class="ev-chal ev-rv">
+                            <div class="ev-chal__head">
+                                <span class="ev-chal__icon"><i class='bx bx-revision'></i></span>
+                                <h3 class="ev-chal__title">CI/CD &amp; DevSecOps</h3>
+                            </div>
+                            <p class="ev-chal__row ev-chal__row--problem"><b>The challenge</b>Shipping updates confidently without letting vulnerabilities through.</p>
+                            <p class="ev-chal__row ev-chal__row--solution"><b>The solution</b>A GitHub Actions pipeline running commit conventions, secret detection, dependency audits, SAST/DAST and container image scanning before every deployment.</p>
+                        </article>
+
+                        <article class="ev-chal ev-rv">
+                            <div class="ev-chal__head">
+                                <span class="ev-chal__icon"><i class='bx bx-mobile-alt'></i></span>
+                                <h3 class="ev-chal__title">Mobile / native integration</h3>
+                            </div>
+                            <p class="ev-chal__row ev-chal__row--problem"><b>The challenge</b>Extending a web platform to mobile without building a separate app from scratch.</p>
+                            <p class="ev-chal__row ev-chal__row--solution"><b>The solution</b>Capacitor wrapped the existing Vue.js stack into an Android app, with native plugins bridging browser APIs to device capabilities.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== FINAL CTA =====-->
+            <section class="ev-section" id="final">
+                <div class="ev-container">
+                    <div class="ev-cta ev-rv">
+                        <span class="ev-cta__eyebrow">Not just a project</span>
+                        <h3>Evalia is a complete enterprise assessment ecosystem — SaaS architecture, AI, DevOps, security and mobile in one platform.</h3>
+                        <p>Combining a modern multi-tenant SaaS architecture, intelligent document-to-question generation, evaluation management, analytics, DevSecOps practices and a mobile application, Evalia is built to be presented to engineering recruiters and technical leads as a real product.</p>
+                        <div class="ev-cta__actions">
+                            <a href="#video" class="button button--white"><i class='bx bx-play-circle'></i> Watch Demo</a>
+                            <a href="../projects.html" class="button button--outline" style="background: rgba(255,255,255,.12); color:#fff; border-color: rgba(255,255,255,.4);">Back to Projects</a>
+                            <a href="../contact.html" class="button button--outline" style="background: rgba(255,255,255,.12); color:#fff; border-color: rgba(255,255,255,.4);">Get in Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer">
+            <p class="footer__title">JACEM <span>BEN AHMED</span></p>
+            <div class="footer__social">
+                <a href="https://www.linkedin.com/in/jacem-ben-ahmed" class="footer__icon" aria-label="LinkedIn Profile"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://github.com/JacemBenAhmed" class="footer__icon" aria-label="GitHub Profile"><i class='bx bxl-github'></i></a>
+            </div>
+            <p class="footer__copy">&#169; Jacem Ben Ahmed — All rights reserved</p>
+        </footer>
+
+        <!--===== SCROLL TO TOP =====-->
+        <button class="scroll-top" id="scroll-top" aria-label="Scroll back to top"><i class='bx bx-chevron-up'></i></button>
+
+        <!--===== LIGHTBOX =====-->
+        <div class="ev-lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+            <button class="ev-lb__close" id="lb-close" type="button" aria-label="Close preview"><i class='bx bx-x'></i></button>
+            <button class="ev-lb__btn ev-lb__prev" id="lb-prev" type="button" aria-label="Previous image"><i class='bx bx-chevron-left'></i></button>
+            <img class="ev-lb__img" id="lb-img" src="" alt="Evalia screenshot enlarged">
+            <button class="ev-lb__btn ev-lb__next" id="lb-next" type="button" aria-label="Next image"><i class='bx bx-chevron-right'></i></button>
+            <p class="ev-lb__cap" id="lb-cap"></p>
+        </div>
+
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="../assets/js/main.js"></script>
+        <script>
+        (function () {
+            'use strict';
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            /*===== SCROLL REVEAL =====*/
+            const revealEls = document.querySelectorAll('.ev-rv');
+            if ('IntersectionObserver' in window && !reduceMotion) {
+                const io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-in');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+                revealEls.forEach(function (el) { io.observe(el); });
+            } else {
+                revealEls.forEach(function (el) { el.classList.add('is-in'); });
+            }
+
+            /*===== STEPS LINE ANIMATION =====*/
+            const stepsEls = document.querySelectorAll('[data-steps]');
+            if ('IntersectionObserver' in window && !reduceMotion) {
+                const sio = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-in');
+                            sio.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                stepsEls.forEach(function (el) { sio.observe(el); });
+            } else {
+                stepsEls.forEach(function (el) { el.classList.add('is-in'); });
+            }
+
+            /*===== STICKY SUB-NAV (scrollspy) =====*/
+            const subnav = document.getElementById('ev-subnav');
+            const links = Array.prototype.slice.call(subnav.querySelectorAll('.ev-subnav__link'));
+            const sections = links.map(function (link) {
+                return document.querySelector(link.getAttribute('href'));
+            }).filter(Boolean);
+
+            function onScrollSpy() {
+                if (subnav) subnav.classList.toggle('scrolled', window.scrollY > 60);
+                const pos = window.scrollY + 160;
+                let currentId = null;
+                sections.forEach(function (section) {
+                    if (section && section.offsetTop <= pos) currentId = section.getAttribute('id');
+                });
+                links.forEach(function (link) {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+                });
+            }
+            window.addEventListener('scroll', onScrollSpy, { passive: true });
+            onScrollSpy();
+
+            /*===== ARCHITECTURE TABS =====*/
+            const tabBtns = document.querySelectorAll('.ev-tab-btn');
+            tabBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    tabBtns.forEach(function (b) {
+                        b.classList.toggle('active', b === btn);
+                        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+                    });
+                    document.querySelectorAll('.ev-tabpanel').forEach(function (panel) {
+                        panel.classList.toggle('active', panel.id === btn.dataset.tab);
+                    });
+                });
+            });
+
+            /*===== ARCHITECTURE NODE DETAILS =====*/
+            document.querySelectorAll('.ev-diagram').forEach(function (diagram) {
+                const panel = diagram.querySelector('[data-detail-panel]');
+                const fallback = panel ? panel.innerHTML : '';
+                const show = function (html) { if (panel) panel.innerHTML = html; };
+                diagram.querySelectorAll('.ev-node').forEach(function (node) {
+                    const html = node.getAttribute('data-detail');
+                    const handler = function () { if (html) show(html); };
+                    const reset = function () { if (panel) panel.innerHTML = fallback; };
+                    node.addEventListener('mouseenter', handler);
+                    node.addEventListener('focus', handler);
+                    node.addEventListener('click', handler);
+                    diagram.addEventListener('mouseleave', reset);
+                });
+            });
+
+            /*===== LIGHTBOX =====*/
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lb-img');
+            const lbCap = document.getElementById('lb-cap');
+            const lbItems = Array.prototype.slice.call(document.querySelectorAll('[data-lb]'));
+            let lbIndex = 0;
+
+            function lbOpen(i) {
+                lbIndex = (i + lbItems.length) % lbItems.length;
+                const item = lbItems[lbIndex];
+                lbImg.src = '../assets/img/evalia-imgs/' + item.getAttribute('data-img');
+                lbImg.alt = item.querySelector('img').alt || 'Evalia screenshot';
+                lbCap.innerHTML = item.getAttribute('data-cap') || '';
+                lb.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+            function lbClose() {
+                lb.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+            lbItems.forEach(function (item, i) {
+                item.addEventListener('click', function () { lbOpen(i); });
+            });
+            document.getElementById('lb-close').addEventListener('click', lbClose);
+            document.getElementById('lb-prev').addEventListener('click', function () { lbOpen(lbIndex - 1); });
+            document.getElementById('lb-next').addEventListener('click', function () { lbOpen(lbIndex + 1); });
+            lb.addEventListener('click', function (e) { if (e.target === lb) lbClose(); });
+            document.addEventListener('keydown', function (e) {
+                if (!lb.classList.contains('open')) return;
+                if (e.key === 'Escape') lbClose();
+                if (e.key === 'ArrowLeft') lbOpen(lbIndex - 1);
+                if (e.key === 'ArrowRight') lbOpen(lbIndex + 1);
+            });
+
+            /*===== VIDEO =====*/
+            const videoLink = 'https://1drv.ms/v/c/4bd71eedd4b9ff37/IQB9EP-RhS6KS5z3XKHmH8WAAQdJlqSwEnt_r0FRbvvrx80';
+            const videoPlay = document.getElementById('video-play');
+            if (videoPlay) {
+                videoPlay.addEventListener('click', function () {
+                    window.open(videoLink, '_blank', 'noopener');
+                });
+            }
+        })();
+        </script>
+    </body>
+</html>

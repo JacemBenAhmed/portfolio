@@ -3,213 +3,274 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Projects by Jacem BEN AHMED — digital signature platform, e-commerce, DevSecOps tooling and more.">
 
         <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
-        <!-- =====BOX ICONS===== -->
+        <script>
+            (function () {
+                try {
+                    var storedTheme = localStorage.getItem('portfolio-theme');
+                    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    var initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+                    document.documentElement.setAttribute('data-theme', initialTheme);
+                    document.documentElement.style.colorScheme = initialTheme;
+                } catch (error) {}
+            }());
+        </script>
+
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
         <title>Projects | Jacem BEN AHMED</title>
     </head>
     <body>
-        <!--===== HEADER =====-->
-        <header class="l-header">
+        <!--===== SCROLL PROGRESS =====-->
+        <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+        <!--===== ANIMATED BACKGROUND =====-->
+        <div class="bg-scene" aria-hidden="true">
+            <span class="bg-orb bg-orb--1"></span>
+            <span class="bg-orb bg-orb--2"></span>
+            <span class="bg-orb bg-orb--3"></span>
+            <span class="bg-orb bg-orb--4"></span>
+            <canvas id="particles-canvas"></canvas>
+        </div>
+        <header class="l-header" id="header">
             <nav class="nav bd-grid">
                 <div>
-                    <a href="index.html" class="nav__logo">Jacem</a>
+                    <a href="index.html" class="nav__logo" aria-label="Jacem Ben Ahmed — Home">
+                        Jacem <span>Ben Ahmed</span>
+                    </a>
                 </div>
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
                         <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="skills.html" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="projects.html" class="nav__link active-link">Projects</a></li>
+                        <li class="nav__item"><a href="index.html#skills" class="nav__link">Skills</a></li>
+                        <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
                         <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
                     </ul>
                 </div>
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
+                <div class="nav__actions">
+                    <button class="nav__theme" id="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+                        <i class='bx bx-moon'></i>
+                    </button>
+                    <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Open menu">
+                        <i class='bx bx-menu'></i>
+                    </div>
                 </div>
             </nav>
         </header>
 
         <main class="l-main">
-            <!--===== PROJECTS HERO =====-->
             <section class="home bd-grid" id="projects-hero">
-                <div class="home__data">
-                    <h1 class="home__title">My <span class="home__title-color">Projects</span><br>Portfolio</h1>
-                    <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                        Explore my collection of software development projects, from web applications to DevOps automation solutions.
+                <div class="home__data" style="text-align: center;">
+                    <span class="home__eyebrow" style="margin-bottom: 1.25rem;"><i class='bx bx-folder'></i> Portfolio</span>
+                    <h1 class="home__title">My <span class="home__title-color">Projects</span></h1>
+                    <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        A selection of software projects — from full-stack web applications to DevOps and DevSecOps automation.
                     </p>
-                    <a href="#projects-grid" class="button">View All Projects</a>
+                    <a href="#projects-grid" class="button">Explore Projects</a>
                 </div>
             </section>
 
-            <!--===== PROJECTS GRID =====-->
             <section class="projects-section section" id="projects-grid">
-                <h2 class="section-title">All Projects</h2>
-                
+                <h2 class="section-title">All <span>Projects</span></h2>
+
                 <div class="bd-grid">
                     <div class="projects-grid">
-                        <!-- Project 1 -->
-                        <div class="project-card">
-                            <div class="project-image">
-                                <i class='bx bx-code-alt'></i>
+                        <article class="project-card">
+                            <div class="project-card__media">
+                                <img src="assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183622.png" alt="Evalia AI assessment platform interface" loading="lazy">
                             </div>
-                            <div class="project-content">
-                                <h3 class="project-title">Signy - Digital Signature Solution</h3>
-                                <p class="project-description">
-                                    Developed a comprehensive digital signature platform with secure document workflows, 
-                                    supporting multiple signature types and document formats. Built with modern web technologies
-                                    and deployed on Azure cloud infrastructure.
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">Evalia — AI-Powered Enterprise Assessments</h3>
+                                <p class="project-card__description">
+                                    A multi-tenant SaaS platform for creating, managing, publishing and analyzing technical evaluations.
+                                    AI-assisted question generation from documents, candidate dashboards, anti-cheat mechanisms,
+                                    DevSecOps CI/CD and a Capacitor mobile application.
                                 </p>
-                                <div class="project-tech">
+                                <div class="project-card__tech">
+                                    <span class="tech-tag">ASP.NET Core</span>
+                                    <span class="tech-tag">Vue.js</span>
+                                    <span class="tech-tag">FastAPI</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">ChromaDB</span>
+                                    <span class="tech-tag">Docker</span>
+                                    <span class="tech-tag">Nginx</span>
+                                    <span class="tech-tag">Capacitor</span>
+                                    <span class="tech-tag">GitHub Actions</span>
+                                </div>
+                                <div class="project-card__links">
+                                    <a href="projects/evalia.html" class="project-card__link"><i class='bx bx-link-external'></i> View Details</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <div class="project-card__media">
+                                <img src="assets/img/signature-imgs/home-page.png" alt="Signy digital signature platform" loading="lazy">
+                            </div>
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">Signy — Digital Signature Solution</h3>
+                                <p class="project-card__description">
+                                    A comprehensive digital signature platform with secure document workflows, multiple signature types,
+                                    OCR search, and AI summaries. Containerized and deployed on Azure.
+                                </p>
+                                <div class="project-card__tech">
                                     <span class="tech-tag">.NET Core</span>
                                     <span class="tech-tag">Vue.js</span>
                                     <span class="tech-tag">SQL Server</span>
                                     <span class="tech-tag">Azure</span>
                                     <span class="tech-tag">Docker</span>
-                                    <span class="tech-tag">Git/GitHub</span>
                                 </div>
-                                <div class="project-links">
-                                    <a href="projects/project-1.html" class="project-link">
-                                        <i class='bx bx-link-external'></i>
-                                        View Details
-                                    </a>
-                                    <a href="#" class="project-link">
-                                        <i class='bx bxl-github'></i>
-                                        GitHub
-                                    </a>
+                                <div class="project-card__links">
+                                    <a href="projects/digital-signature.html" class="project-card__link"><i class='bx bx-link-external'></i> View Details</a>
                                 </div>
                             </div>
-                        </div>
-                         <!-- Project 2 -->
-                        <div class="project-card">
-                            <div class="project-image">
-                                <i class='bx bx-code-alt'></i>
-                            </div>
-                            <div class="project-content">
-                                <h3 class="project-title"> Edity– AI-Powered Collaborative Document Editor</h3>
-                                <p class="project-description">
-                                   Developed a full-stack web application similar to Google Docs, enabling users to create, edit, and export documents in multiple formats (PDF, Word, etc.). Integrated an AI assistant that can edit content directly within documents and interact with users through prompts and chat. Implemented real-time collaboration features allowing users to share documents with different access levels (read/edit) and track live modifications.
-                                </p>
-                                <div class="project-tech">
-                                    <span class="tech-tag">.NET Core</span>
-                                    <span class="tech-tag">Vue.js</span>
-                                     <span class="tech-tag">SignalR</span>
-                                    <span class="tech-tag">Postgres</span>
-                                   
-                                    <span class="tech-tag">Docker</span>
-                                    <span class="tech-tag">Git/GitHub</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="#" class="project-link">
-                                        <i class='bx bx-link-external'></i>
-                                        View Details
-                                    </a>
-                                    <a href="#" class="project-link">
-                                        <i class='bx bxl-github'></i>
-                                        GitHub
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        </article>
 
-                        <!-- Project 2 -->
-                        <div class="project-card">
-                            <div class="project-image">
-                                <i class='bx bx-store'></i>
+                        <article class="project-card">
+                            <div class="project-card__media">
+                                <img src="assets/img/daberly-imgs/home-page.png" alt="Daberly e-commerce platform" loading="lazy">
                             </div>
-                            <div class="project-content">
-                                <h3 class="project-title"> E-commerce for Sellers Platform</h3>
-                                <p class="project-description">
-                                    Freelance e‑commerce for online shoe sales with real‑time chat, dynamic
-                                    announcements, and a complete admin dashboard. Deployed on VPS with Docker
-                                    and Nginx, automated by GitHub Actions.
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">Daberly — E-commerce for Resellers</h3>
+                                <p class="project-card__description">
+                                    Freelance e-commerce platform for shoe resellers with real-time chat, dynamic announcements,
+                                    product videos, and a complete admin dashboard. Deployed with Docker and Nginx, automated via GitHub Actions.
                                 </p>
-                                <div class="project-tech">
+                                <div class="project-card__tech">
                                     <span class="tech-tag">.NET Core</span>
                                     <span class="tech-tag">Vue.js</span>
                                     <span class="tech-tag">SignalR</span>
                                     <span class="tech-tag">PostgreSQL</span>
                                     <span class="tech-tag">Docker</span>
                                     <span class="tech-tag">Nginx</span>
+                                    <span class="tech-tag">GitHub Actions</span>
                                 </div>
-                                <div class="project-links">
-                                    <a href="projects/daberly.html" class="project-link">
-                                        <i class='bx bx-link-external'></i>
-                                        View Details
-                                    </a>
-                                    <a href="#" class="project-link">
-                                        <i class='bx bxl-github'></i>
-                                        GitHub
-                                    </a>
+                                <div class="project-card__links">
+                                    <a href="projects/daberly.html" class="project-card__link"><i class='bx bx-link-external'></i> View Details</a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
 
-                   
-
-                        <!-- Project 4 - Testy -->
-                        <div class="project-card">
-                            <div class="project-image">
-                                <i class='bx bx-shield-quarter'></i>
+                        <article class="project-card">
+                            <div class="project-card__media">
+                                <img src="assets/img/testy-imgs/home_page.png" alt="Testy DevSecOps platform" loading="lazy">
                             </div>
-                            <div class="project-content">
-                                <h3 class="project-title">Testy DevSecOps Platform</h3>
-                                <p class="project-description">
-                                    Plateforme web CI/CD pour tester et sécuriser des solutions Odoo avec analyses SAST/DAST.
-                                    Intègre SonarQube, OWASP ZAP et Snyk dans un pipeline Jenkins complet avec authentification GitHub.
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">Testy — DevSecOps Test Platform</h3>
+                                <p class="project-card__description">
+                                    A web platform to test and secure Odoo solutions. Integrates SonarQube, OWASP ZAP, and Snyk in a
+                                    Jenkins pipeline with GitHub authentication, generating detailed security and quality reports.
                                 </p>
-                                <div class="project-tech">
+                                <div class="project-card__tech">
                                     <span class="tech-tag">Express.js</span>
                                     <span class="tech-tag">Vue.js</span>
                                     <span class="tech-tag">Jenkins</span>
                                     <span class="tech-tag">Docker</span>
                                     <span class="tech-tag">SonarQube</span>
                                     <span class="tech-tag">OWASP ZAP</span>
+                                    <span class="tech-tag">MongoDB</span>
                                 </div>
-                                <div class="project-links">
-                                    <a href="projects/testy.html" class="project-link">
-                                        <i class='bx bx-link-external'></i>
-                                        View Details
-                                    </a>
-                                    <a href="#" class="project-link">
-                                        <i class='bx bxl-github'></i>
-                                        GitHub
-                                    </a>
+                                <div class="project-card__links">
+                                    <a href="projects/testy.html" class="project-card__link"><i class='bx bx-link-external'></i> View Details</a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
 
-                        <!-- Project 5 -->
-                       
-                    
-                    <div style="text-align: center; margin-top: 3rem;">
+                        <article class="project-card">
+                            <div class="project-card__media">
+                                <span class="project-card__icon"><i class='bx bx-edit-alt'></i></span>
+                            </div>
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">Edity — AI Collaborative Document Editor</h3>
+                                <p class="project-card__description">
+                                    A full-stack document editor similar to Google Docs with export to PDF/Word, an AI assistant that edits
+                                    content directly, and real-time collaboration with read/edit access levels via SignalR.
+                                </p>
+                                <div class="project-card__tech">
+                                    <span class="tech-tag">.NET Core</span>
+                                    <span class="tech-tag">Vue.js</span>
+                                    <span class="tech-tag">SignalR</span>
+                                    <span class="tech-tag">Postgres</span>
+                                    <span class="tech-tag">Docker</span>
+                                </div>
+                                <div class="project-card__links">
+                                    <span class="project-card__link" style="opacity: 0.6; cursor: default;">Details coming soon</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <div class="project-card__media">
+                                <span class="project-card__icon"><i class='bx bx-folder-open'></i></span>
+                            </div>
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">Bureau d'Ordre Management</h3>
+                                <p class="project-card__description">
+                                    Document management system for processing client requests, featuring an admin panel and
+                                    real-time dashboard for monitoring document workflows.
+                                </p>
+                                <div class="project-card__tech">
+                                    <span class="tech-tag">.NET Core</span>
+                                    <span class="tech-tag">Vue.js</span>
+                                    <span class="tech-tag">SQL Server</span>
+                                    <span class="tech-tag">Azure</span>
+                                </div>
+                                <div class="project-card__links">
+                                    <a href="projects/bureau-dordre.html" class="project-card__link"><i class='bx bx-link-external'></i> View Details</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <div class="project-card__media">
+                                <span class="project-card__icon"><i class='bx bx-cog'></i></span>
+                            </div>
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">CI/CD Pipeline Automation</h3>
+                                <p class="project-card__description">
+                                    Automated CI/CD pipelines with Jenkins and Ansible, Docker containerization, Kubernetes orchestration,
+                                    and automated testing with quality gates.
+                                </p>
+                                <div class="project-card__tech">
+                                    <span class="tech-tag">Jenkins</span>
+                                    <span class="tech-tag">Ansible</span>
+                                    <span class="tech-tag">Docker</span>
+                                    <span class="tech-tag">Kubernetes</span>
+                                    <span class="tech-tag">Shell</span>
+                                </div>
+                                <div class="project-card__links">
+                                    <a href="projects/cicd-pipeline.html" class="project-card__link"><i class='bx bx-link-external'></i> View Details</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="projects-cta">
                         <a href="index.html" class="button">Back to Home</a>
                     </div>
                 </div>
             </section>
         </main>
 
-        <!--===== FOOTER =====-->
         <footer class="footer">
-            <p class="footer__title">JACEM BEN AHMED</p>
+            <p class="footer__title">JACEM <span>BEN AHMED</span></p>
             <div class="footer__social">
-                <a href="#" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-github' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+                <a href="https://www.linkedin.com/in/jacem-ben-ahmed" class="footer__icon" aria-label="LinkedIn Profile"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://github.com/JacemBenAhmed" class="footer__icon" aria-label="GitHub Profile"><i class='bx bxl-github'></i></a>
             </div>
-            <p class="footer__copy">&#169; Jacem Ben Ahmed | All rights reserved</p>
+            <p class="footer__copy">&#169; Jacem Ben Ahmed — All rights reserved</p>
         </footer>
 
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
+        <button class="scroll-top" id="scroll-top" aria-label="Scroll back to top"><i class='bx bx-chevron-up'></i></button>
 
-        <!--===== MAIN JS =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
         <script src="assets/js/main.js"></script>
     </body>
 </html>
-

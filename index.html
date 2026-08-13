@@ -3,36 +3,69 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Jacem BEN AHMED — Software Engineer specializing in full-stack development (.NET, Vue.js) and DevOps (Docker, Jenkins, Kubernetes, Azure).">
 
         <link rel="stylesheet" href="assets/css/styles.css">
         <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
-        <!-- =====BOX ICONS===== -->
+        <script>
+            (function () {
+                try {
+                    var storedTheme = localStorage.getItem('portfolio-theme');
+                    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    var initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+                    document.documentElement.setAttribute('data-theme', initialTheme);
+                    document.documentElement.style.colorScheme = initialTheme;
+                } catch (error) {}
+            }());
+        </script>
+
+        <!--=====BOX ICONS=====-->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
-        <title>Jacem | Software Engineering Student</title>
+        <title>Jacem BEN AHMED | Software Engineer</title>
     </head>
     <body>
+        <!--===== SCROLL PROGRESS =====-->
+        <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+        <!--===== ANIMATED BACKGROUND =====-->
+        <div class="bg-scene" aria-hidden="true">
+            <span class="bg-orb bg-orb--1"></span>
+            <span class="bg-orb bg-orb--2"></span>
+            <span class="bg-orb bg-orb--3"></span>
+            <span class="bg-orb bg-orb--4"></span>
+            <canvas id="particles-canvas"></canvas>
+        </div>
+
         <!--===== HEADER =====-->
-        <header class="l-header">
+        <header class="l-header" id="header">
             <nav class="nav bd-grid">
                 <div>
-                    <a href="index.html" class="nav__logo">Jacem</a>
+                    <a href="index.html" class="nav__logo" aria-label="Jacem Ben Ahmed — Home">
+                        Jacem <span>Ben Ahmed</span>
+                    </a>
                 </div>
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
                         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                        <li class="nav__item"><a href="#experience" class="nav__link">Experience</a></li>
                         <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
-                        <li class="nav__item"><a href="#competitive-programming" class="nav__link">CP</a></li>
+                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
                         <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
                     </ul>
                 </div>
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
+                <div class="nav__actions">
+                    <button class="nav__theme" id="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+                        <i class='bx bx-moon'></i>
+                    </button>
+
+                    <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Open menu">
+                        <i class='bx bx-menu'></i>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -40,270 +73,380 @@
         <main class="l-main">
             <!--===== HOME =====-->
             <section class="home bd-grid" id="home">
-                <div class="home__data">
-                    <h1 class="home__title">Hi,<br>I am <span class="home__title-color" data-text="Jacem BEN AHMED">Jacem BEN AHMED</span><br> Software Engineering Student</h1>
+                <div class="home__content">
+                    <div class="home__data">
+                        <span class="home__eyebrow"><i class='bx bx-code-alt'></i> Portfolio — Jacem BEN AHMED</span>
+                        <h1 class="home__title">Software <span class="home__title-color">Engineer</span></h1>
+                        <p class="home__name">Jacem <span>BEN AHMED</span></p>
+                        <p class="home__typed" aria-live="polite"><span id="typed-text"></span><span class="home__cursor"></span></p>
+                        <p class="home__subtitle">Building reliable products from clean front-ends and robust back-ends to smooth cloud delivery.</p>
 
-                    <div class="home__buttons">
-                        <a href="#projects" class="button">View Projects</a>
-                        <div class="resume-dropdown">
-                            <button class="button button--outline resume-btn" onclick="toggleDropdown(this)">
-                                <i class='bx bx-download'></i>
-                                Download Resume
-                            </button>
-                            <div class="resume-dropdown-content">
-                                <a href="assets/resume/cv_JacemBenAhmed_(EN).pdf" download="cv_JacemBenAhmed_(EN).pdf" target="_blank">English</a>
-                                <a href="assets/resume/cv_JacemBenAhmed_(FR).pdf" download="cv_JacemBenAhmed_(FR).pdf" target="_blank">Français</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="home__social">
-                    <a href="https://www.linkedin.com/in/jacem-ben-ahmed" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
-                    
-                    <a href="https://github.com/JacemBenAhmed" class="home__social-icon"><i class='bx bxl-github' ></i></a>
-                </div>
-            </section>
-
-            <!--===== ABOUT =====-->
-            <section class="about section " id="about">
-                <h2 class="section-title">About</h2>
-
-                <div class="about__container bd-grid">
-                    <div class="about__content">
-                        <h2 class="about__subtitle">I'm Jacem BEN AHMED</h2>
-                        <p class="about__text">Hi, I'm Jacem BEN AHMED, 22 y.o, based in Zarzis. I'm a software engineering student at ISIMG, passionate about software development, DevOps, and problem-solving. I love building efficient and creative solutions, exploring new technologies, and turning ideas into real-world applications.</p>
-                        
-                        <div class="about__actions">
+                        <div class="home__buttons">
+                            <a href="#projects" class="button"><i class='bx bx-folder-open'></i> View Projects</a>
+                            <a href="#contact" class="button button--outline">Get in Touch</a>
                             <div class="resume-dropdown">
                                 <button class="button button--outline resume-btn" onclick="toggleDropdown(this)">
                                     <i class='bx bx-download'></i>
-                                    Download Resume
+                                    Resume
                                 </button>
                                 <div class="resume-dropdown-content">
-                                    <a href="assets/resume/cv_JacemBenAhmed_(EN).pdf" download="cv_JacemBenAhmed_(EN).pdf" target="_blank">English</a>
-                                    <a href="assets/resume/cv_JacemBenAhmed_(FR).pdf" download="cv_JacemBenAhmed_(FR).pdf" target="_blank">Français</a>
+                                    <a href="assets/resume/cv_JacemBenAhmed_(EN).pdf" download="cv_JacemBenAhmed_(EN).pdf"><i class='bx bx-file'></i> English</a>
+                                    <a href="assets/resume/cv_JacemBenAhmed_(FR).pdf" download="cv_JacemBenAhmed_(FR).pdf"><i class='bx bx-file'></i> Français</a>
                                 </div>
                             </div>
                         </div>
-                    </div>                                   
+
+                        <div class="home__meta">
+                            <span><i class='bx bx-code-alt'></i> Full-stack</span>
+                            <span><i class='bx bx-transfer-alt'></i> DevOps</span>
+                            <span><i class='bx bx-cloud'></i> Cloud delivery</span>
+                            <span><i class='bx bx-trophy'></i> TCPC 2026 · 35th / 100</span>
+                        </div>
+
+                        <div class="home__social">
+                            <a href="https://www.linkedin.com/in/jacem-ben-ahmed" class="home__social-icon" aria-label="LinkedIn Profile"><i class='bx bxl-linkedin'></i></a>
+                            <a href="https://github.com/JacemBenAhmed" class="home__social-icon" aria-label="GitHub Profile"><i class='bx bxl-github'></i></a>
+                            <a href="https://codeforces.com/" class="home__social-icon" aria-label="Codeforces Profile"><i class='bx bx-code-curly'></i></a>
+                            <a href="https://leetcode.com/" class="home__social-icon" aria-label="LeetCode Profile"><i class='bx bx-code-block'></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#about" class="home__scroll" aria-label="Scroll to About">
+                    <span class="home__scroll-mouse"><span class="home__scroll-dot"></span></span>
+                    <span class="home__scroll-label">Scroll</span>
+                </a>
+            </section>
+
+            <!--===== ABOUT =====-->
+            <section class="about section" id="about">
+                <h2 class="section-title">About <span>Me</span></h2>
+
+                <div class="about__container bd-grid">
+                    <div class="about__content about__panel">
+                        <h2 class="about__subtitle">Let me introduce myself</h2>
+                        <p class="about__text">Hi, I’m Jacem — a Software Engineer from Zarzis, Tunisia, currently completing my engineering degree at ISIMG while interning at NeoLedge. I care about shipping maintainable software: clean architecture, reliable testing, and automated delivery. Outside of work, I stay sharp through competitive programming and building side projects end-to-end.</p>
+
+                        <div class="about__highlights">
+                            <span class="about__highlight"><i class='bx bx-code-alt'></i> Full-stack delivery</span>
+                            <span class="about__highlight"><i class='bx bx-transfer-alt'></i> DevOps automation</span>
+                            <span class="about__highlight"><i class='bx bx-cloud'></i> Cloud &amp; containers</span>
+                            <span class="about__highlight"><i class='bx bx-trophy'></i> Competitive programmer</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!--===== EXPERIENCES =====-->
+            <!--===== EXPERIENCE =====-->
             <section class="section" id="experience">
-                <h2 class="section-title">Experiences</h2>
-                <div class="bd-grid">
-                    <div>
-                        <img src="assets/img/softifi_logo.png" alt="SOFTIFI logo" style="max-width:140px; margin-bottom: 0.5rem;" />
-                        <h3 class="about__subtitle">DevOps Intern, SOFTIFI — Jul 2024</h3>
-                        <ul>
-                            <li>Implemented CI/CD pipelines using Jenkins to automate application deployments.</li>
-                            <li>Utilized Ansible for configuration management and automated deployment processes.</li>
-                            <li>Deployed custom Odoo modules using Docker and Kubernetes.</li>
-                        </ul>
-                        <p><strong>Technologies</strong>: Jenkins, Ansible, Scripting shell, Docker, Odoo, Postgres, Git/GitHub</p>
-                    </div>
-                    <div>
-                        <img src="assets/img/neoledge_logo.png" alt="NeoLedge logo" style="max-width:140px; margin-bottom: 0.5rem;" />
-                        <h3 class="about__subtitle">Web Developer Intern, NeoLedge — Aug 2024 – Sept 2024</h3>
-                        <ul>
-                            <li>Developed an application for managing a "bureau d’ordre" to process client request documents.</li>
-                            <li>Built admin panel and dashboard for management and monitoring.</li>
-                        </ul>
-                        <p><strong>Technologies</strong>: .NET Core, Vue.js, SQL Server, Azure, Docker, Git/GitHub</p>
-                    </div>
-                    <div>
-                        <img src="assets/img/neoledge_logo.png" alt="NeoLedge logo" style="max-width:140px; margin-bottom: 0.5rem;" />
-                        <h3 class="about__subtitle">Software Developer Intern, NeoLedge — Jul – Aug 2025</h3>
-                        <ul>
-                            <li>Developed a digital signature solution supporting secure document workflows.</li>
-                            <li>Implemented front-end in Vue.js and back-end services in .NET.</li>
-                            <li>Containerized services with Docker and managed code with Git/GitHub.</li>
-                        </ul>
-                        <p><strong>Technologies</strong>:  .NET Core, Vue.js, SQL Server, Azure, Docker, Git/GitHub</p>
-                    </div>
+                <h2 class="section-title">Work <span>Experience</span></h2>
+                <p class="section-intro">Internships across DevOps and full-stack engineering.</p>
+                <div class="experience__timeline">
+                    <article class="experience__item">
+                        <div class="experience__marker">
+                            <img src="assets/img/neoledge_logo.png" alt="NeoLedge logo" />
+                        </div>
+                        <div class="experience__card">
+                            <div class="experience__header">
+                                <div>
+                                    <p class="experience__company">NeoLedge</p>
+                                    <h3 class="experience__role">Software Engineer Intern</h3>
+                                </div>
+                                <span class="experience__date"><i class='bx bx-calendar'></i> Feb – Jun 2026</span>
+                            </div>
+                            <p class="experience__summary">Built a SaaS platform for AI-assisted technical candidate assessment.</p>
+                            <ul class="experience__list">
+                                <li>Designed and developed a SaaS platform for technical candidate assessment with AI-assisted question generation from documents.</li>
+                                <li>Built a complete multi-tenant architecture with authentication, role-based access control, and organization management.</li>
+                                <li>Integrated an AI pipeline combining OCR, document processing, semantic search, embeddings, and LLMs to automatically generate evaluation questions.</li>
+                                <li>Developed secure online assessment workflows with anti-cheating mechanisms, timed sessions, background jobs for automated report generation, and real-time monitoring.</li>
+                                <li>Ensured application quality through unit and integration testing, and automated CI/CD pipelines using Docker and GitHub Actions.</li>
+                            </ul>
+                            <div class="experience__tech">
+                                <span>.NET Core</span>
+                                <span>Vue.js</span>
+                                <span>Capacitor</span>
+                                <span>Azure DevOps</span>
+                                <span>Docker</span>
+                                <span>GitHub Actions</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="experience__item">
+                        <div class="experience__marker">
+                            <img src="assets/img/neoledge_logo.png" alt="NeoLedge logo" />
+                        </div>
+                        <div class="experience__card">
+                            <div class="experience__header">
+                                <div>
+                                    <p class="experience__company">NeoLedge</p>
+                                    <h3 class="experience__role">Software Engineer Intern</h3>
+                                </div>
+                                <span class="experience__date"><i class='bx bx-calendar'></i> Jul – Sept 2025</span>
+                            </div>
+                            <p class="experience__summary">Developed a digital signature platform with AI-powered document processing and secure e-signatures.</p>
+                            <ul class="experience__list">
+                                <li>Developed a digital signature web application using .NET and Vue.js, providing a secure platform for electronic document management and signing workflows.</li>
+                                <li>Integrated AI-powered document summarization and OCR extraction to automate document processing and improve information accessibility.</li>
+                                <li>Implemented secure electronic signatures to ensure document authenticity, integrity, and non-repudiation.</li>
+                                <li>Developed real-time notifications and collaborative task management features using SignalR, enabling efficient document tracking and user communication.</li>
+                                <li>Designed a customizable drag-and-drop dashboard, allowing users to personalize widgets and monitor documents, tasks, and activities through an intuitive interface.</li>
+                            </ul>
+                            <div class="experience__tech">
+                                <span>.NET</span>
+                                <span>Vue.js</span>
+                                <span>SignalR</span>
+                                <span>SQL Server</span>
+                                <span>Azure DevOps</span>
+                                <span>Docker</span>
+                                <span>Git/GitHub</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="experience__item">
+                        <div class="experience__marker">
+                            <img src="assets/img/neoledge_logo.png" alt="NeoLedge logo" />
+                        </div>
+                        <div class="experience__card">
+                            <div class="experience__header">
+                                <div>
+                                    <p class="experience__company">NeoLedge</p>
+                                    <h3 class="experience__role">Web Developer Intern</h3>
+                                </div>
+                                <span class="experience__date"><i class='bx bx-calendar'></i> Aug – Sept 2024</span>
+                            </div>
+                            <p class="experience__summary">Built an application for managing a bureau d’ordre to process client request documents.</p>
+                            <ul class="experience__list">
+                                <li>Built admin and dashboard interfaces for management and monitoring.</li>
+                                <li>Worked on the application stack with a focus on delivery and maintainability.</li>
+                            </ul>
+                            <div class="experience__tech">
+                                <span>.NET Core</span>
+                                <span>Vue.js</span>
+                                <span>SQL Server</span>
+                                <span>Azure</span>
+                                <span>Docker</span>
+                                <span>Git/GitHub</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="experience__item">
+                        <div class="experience__marker">
+                            <img src="assets/img/softifi_logo.png" alt="SOFTIFI logo" />
+                        </div>
+                        <div class="experience__card">
+                            <div class="experience__header">
+                                <div>
+                                    <p class="experience__company">SOFTIFI</p>
+                                    <h3 class="experience__role">DevOps Intern</h3>
+                                </div>
+                                <span class="experience__date"><i class='bx bx-calendar'></i> Jul 2024</span>
+                            </div>
+                            <p class="experience__summary">Implemented CI/CD pipelines and deployment automation for Odoo modules.</p>
+                            <ul class="experience__list">
+                                <li>Implemented CI/CD pipelines using Jenkins to automate application deployments.</li>
+                                <li>Utilized Ansible for configuration management and automated deployment processes.</li>
+                                <li>Deployed custom Odoo modules using Docker and Kubernetes.</li>
+                            </ul>
+                            <div class="experience__tech">
+                                <span>Jenkins</span>
+                                <span>Ansible</span>
+                                <span>Shell Scripting</span>
+                                <span>Docker</span>
+                                <span>Odoo</span>
+                                <span>PostgreSQL</span>
+                                <span>Git/GitHub</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </section>
 
             <!--===== EDUCATION =====-->
             <section class="section" id="education">
                 <h2 class="section-title">Education</h2>
-                <div class="bd-grid">
-                    <div>
-                        <h3 class="about__subtitle">ISIMG</h3>
-                        <p><strong>Software Engineering</strong> — Sept 2023 – Present</p>
-                        <p>Currently pursuing a degree in Software Engineering </p>
+                <div class="education__grid bd-grid">
+                    <div class="education__card">
+                        <span class="school"><i class='bx bxs-graduation'></i> ISIMG</span>
+                        <h3 class="degree">Software Engineering</h3>
+                        <p class="period">Sept 2023 – 2026</p>
+                        <p>Currently pursuing a degree in Software Engineering.</p>
                     </div>
-                    <div>
-                        <h3 class="about__subtitle">ISIMG</h3>
-                        <p><strong>Integrated Preparatory Engineering MPI</strong> — 2021 – 2023</p>
-                        <p>Completed preparatory engineering studies with focus on mathematics, physics, and computer science fundamentals.</p>
+                    <div class="education__card">
+                        <span class="school"><i class='bx bxs-graduation'></i> ISIMG</span>
+                        <h3 class="degree">Integrated Preparatory Engineering MPI</h3>
+                        <p class="period">2021 – 2023</p>
+                        <p>Completed preparatory engineering studies with a focus on mathematics, physics, and computer science fundamentals.</p>
                     </div>
                 </div>
             </section>
 
             <!--===== PROJECTS =====-->
             <section class="projects-section section" id="projects">
-                <h2 class="section-title">Featured Projects</h2>
-                
+                <h2 class="section-title">Featured <span>Projects</span></h2>
+
                 <div class="bd-grid">
                     <div class="projects-grid">
-                        <div class="project-card">
-                            <div class="project-image">
-                                <i class='bx bx-code-alt'></i>
+                        <article class="project-card">
+                            <div class="project-card__media">
+                                <img src="assets/img/signature-imgs/home-page.png" alt="Digital Signature Solution interface" loading="lazy">
                             </div>
-                            <div class="project-content">
-                                <h3 class="project-title">Digital Signature Solution</h3>
-                                <p class="project-description">
-                                    A digital signature web application for securely signing and managing documents online.
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">Digital Signature Solution</h3>
+                                <p class="project-card__description">
+                                    A digital signature web application for securely signing, managing, and summarizing documents online — with OCR, AI summaries, and certificate-backed signatures.
                                 </p>
-                                <div class="project-tech">
+                                <div class="project-card__tech">
                                     <span class="tech-tag">.NET Core</span>
                                     <span class="tech-tag">Vue.js</span>
                                     <span class="tech-tag">SQL Server</span>
                                     <span class="tech-tag">Azure</span>
                                     <span class="tech-tag">Docker</span>
                                 </div>
-                                <div class="project-links">
-                                    <a href="projects/project-1.html" class="project-link">
-                                        <i class='bx bx-link-external'></i>
-                                        View Details
-                                    </a>
-                                    <a href="#" class="project-link">
-                                        <i class='bx bxl-github'></i>
-                                        GitHub
-                                    </a>
+                                <div class="project-card__links">
+                                    <a href="projects/digital-signature.html" class="project-card__link"><i class='bx bx-link-external'></i> View Details</a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
 
-                        <div class="project-card">
-                            <div class="project-image">
-                                <i class='bx bx-folder-open'></i>
+                        <article class="project-card">
+                            <div class="project-card__media">
+                                <img src="assets/img/evalia-imgs/Capture%20d%27%C3%A9cran%202026-08-13%20183622.png" alt="Evalia AI assessment platform interface" loading="lazy">
                             </div>
-                            <div class="project-content">
-                                <h3 class="project-title">Modern e‑commerce platform with full options (Freelance Project)</h3>
-                                <p class="project-description">
-                                    A personalized e-commerce platform for resellers
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">Evalia — AI-Powered Enterprise Assessments</h3>
+                                <p class="project-card__description">
+                                    A multi-tenant SaaS platform for creating, managing and analyzing technical evaluations — with AI-generated
+                                    questions from documents, candidate dashboards, anti-cheat mechanisms and a Capacitor mobile app.
                                 </p>
-                                <div class="project-tech">
-                                    <span class="tech-tag">.NET Core</span>
+                                <div class="project-card__tech">
+                                    <span class="tech-tag">ASP.NET Core</span>
                                     <span class="tech-tag">Vue.js</span>
-                                    <span class="tech-tag">Postgres</span>
+                                    <span class="tech-tag">FastAPI</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">ChromaDB</span>
                                     <span class="tech-tag">Docker</span>
-                                    
+                                    <span class="tech-tag">GitHub Actions</span>
                                 </div>
-                                <div class="project-links">
-                                    <a href="projects/daberly.html" class="project-link">
-                                        <i class='bx bx-link-external'></i>
-                                        View Details
-                                    </a>
-                                    <a href="#" class="project-link">
-                                        <i class='bx bxl-github'></i>
-                                        GitHub
-                                    </a>
+                                <div class="project-card__links">
+                                    <a href="projects/evalia.html" class="project-card__link"><i class='bx bx-link-external'></i> View Details</a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
 
-                        <div class="project-card">
-                            <div class="project-image">
-                                <i class='bx bx-cog'></i>
+                        <article class="project-card">
+                            <div class="project-card__media">
+                                <img src="assets/img/testy-imgs/home_page.png" alt="Testy DevSecOps platform interface" loading="lazy">
                             </div>
-                            <div class="project-content">
-                                <h3 class="project-title">Test Platform DevSecOps (Odoo Modules Tests SAST/DAST)</h3>
-                                <p class="project-description">
-                                    A web platform for testing and analyzing Odoo solutions using CI/CD and DevSecOps tools.
+                            <div class="project-card__content">
+                                <h3 class="project-card__title">Testy — DevSecOps Test Platform</h3>
+                                <p class="project-card__description">
+                                    A web platform for testing and analyzing Odoo solutions with SAST/DAST tools (SonarQube, OWASP ZAP, Snyk) orchestrated through a Jenkins CI/CD pipeline.
                                 </p>
-                                <div class="project-tech">
+                                <div class="project-card__tech">
                                     <span class="tech-tag">Express.js</span>
                                     <span class="tech-tag">Vue.js</span>
                                     <span class="tech-tag">Jenkins</span>
-                                    <span class="tech-tag">MongoDB</span>
-                                    <span class="tech-tag">Shell Scripting</span>
-                                    <span class="tech-tag">Odoo</span>
                                     <span class="tech-tag">Docker</span>
-                                    <span class="tech-tag">Git/GitHub & Github APIs</span>
+                                    <span class="tech-tag">SonarQube</span>
+                                    <span class="tech-tag">OWASP ZAP</span>
                                 </div>
-                                <div class="project-links">
-                                    <a href="projects/testy.html" class="project-link">
-                                        <i class='bx bx-link-external'></i>
-                                        View Details
-                                    </a>
-                                    <a href="#" class="project-link">
-                                        <i class='bx bxl-github'></i>
-                                        GitHub
-                                    </a>
+                                <div class="project-card__links">
+                                    <a href="projects/testy.html" class="project-card__link"><i class='bx bx-link-external'></i> View Details</a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </div>
-                    
-                    <div style="text-align: center; margin-top: 3rem;">
-                        <a href="projects.html" class="button">Explore All Projects</a>
+
+                    <div class="projects-cta">
+                        <a href="projects.html" class="button button--outline">Explore All Projects</a>
                     </div>
                 </div>
             </section>
 
             <!--===== SKILLS =====-->
             <section class="skills section" id="skills">
-                <h2 class="section-title">Technologies</h2>
+                <h2 class="section-title">Technologies <span>I Use</span></h2>
 
-                <div class="skills__container bd-grid">          
+                <div class="skills__container bd-grid">
                     <div class="skills__content">
-                        
-                        <p class="skills__text">Tools and stacks I work with.</p>
-                        
-                        <!-- Tech Grid -->
+                        <p class="skills__text">Tools and stacks I work with on a daily basis.</p>
+
                         <div class="tech-grid">
-                            <div class="tech-item">
-                                <i class='bx bx-code-alt'></i>
+                            <div class="tech-item" data-tooltip=".NET Core">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/dotnet/512BD4" alt=".NET Core" loading="lazy"></span>
                                 <span>.NET Core</span>
                             </div>
-                            <div class="tech-item">
-                                <i class='bx bxl-vuejs'></i>
+                            <div class="tech-item" data-tooltip="Vue.js">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/vuedotjs/4FC08D" alt="Vue.js" loading="lazy"></span>
                                 <span>Vue.js</span>
                             </div>
-                            <div class="tech-item">
-                                <i class='bx bx-data'></i>
+                            <div class="tech-item" data-tooltip="SQL Server">
+                                <span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="SQL Server" loading="lazy"></span>
                                 <span>SQL Server</span>
                             </div>
-                            <div class="tech-item">
-                                <i class='bx bx-data'></i>
-                                <span>Postgres</span>
+                            <div class="tech-item" data-tooltip="PostgreSQL">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="PostgreSQL" loading="lazy"></span>
+                                <span>PostgreSQL</span>
                             </div>
-                            <div class="tech-item">
-                                <i class='bx bx-cog'></i>
-                                <span>Jenkins</span>
+                            <div class="tech-item" data-tooltip="Git">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/git/F05032" alt="Git" loading="lazy"></span>
+                                <span>Git</span>
                             </div>
-                            <div class="tech-item">
-                                <i class='bx bx-cog'></i>
-                                <span>Shell Scripting</span>
+                            <div class="tech-item" data-tooltip="GitHub">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/github/181717" alt="GitHub" loading="lazy"></span>
+                                <span>GitHub</span>
                             </div>
-                            <div class="tech-item">
-                                <i class='bx bx-cog'></i>
-                                <span>Ansible</span>
+                            <div class="tech-item" data-tooltip="GitHub Actions">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/githubactions/2088FF" alt="GitHub Actions" loading="lazy"></span>
+                                <span>GitHub Actions</span>
                             </div>
-                            <div class="tech-item">
-                                <i class='bx bxl-docker'></i>
+                            <div class="tech-item" data-tooltip="Docker">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker" loading="lazy"></span>
                                 <span>Docker</span>
                             </div>
-                            <div class="tech-item">
-                                <i class='bx bx-network-chart'></i>
+                            <div class="tech-item" data-tooltip="Kubernetes">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="Kubernetes" loading="lazy"></span>
                                 <span>Kubernetes</span>
                             </div>
-                            <div class="tech-item">
-                                <i class='bx bxl-git'></i>
-                                <span>Git/GitHub</span>
+                            <div class="tech-item" data-tooltip="Jenkins">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/jenkins/D24939" alt="Jenkins" loading="lazy"></span>
+                                <span>Jenkins</span>
                             </div>
-                            <div class="tech-item">
-                                <i class='bx bxl-microsoft'></i>
+                            <div class="tech-item" data-tooltip="Ansible">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/ansible/EE0000" alt="Ansible" loading="lazy"></span>
+                                <span>Ansible</span>
+                            </div>
+                            <div class="tech-item" data-tooltip="Microsoft Azure">
+                                <span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Microsoft Azure" loading="lazy"></span>
                                 <span>Azure</span>
                             </div>
-                            <div class="tech-item">
-                                <i class='bx bx-terminal'></i>
-                                <span>Command Line</span>
+                            <div class="tech-item" data-tooltip="Shell / Bash">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/gnubash/4EAA25" alt="Shell / Bash" loading="lazy"></span>
+                                <span>Shell / Bash</span>
+                            </div>
+                            <div class="tech-item" data-tooltip="Capacitor">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/capacitor/119EFF" alt="Capacitor" loading="lazy"></span>
+                                <span>Capacitor</span>
+                            </div>
+                            <div class="tech-item" data-tooltip="Odoo">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/odoo/714B67" alt="Odoo" loading="lazy"></span>
+                                <span>Odoo</span>
+                            </div>
+                            <div class="tech-item" data-tooltip="Nginx">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/nginx/009639" alt="Nginx" loading="lazy"></span>
+                                <span>Nginx</span>
+                            </div>
+                            <div class="tech-item" data-tooltip="Express.js">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/express/1E293B" alt="Express.js" loading="lazy"></span>
+                                <span>Express.js</span>
+                            </div>
+                            <div class="tech-item" data-tooltip="Snyk">
+                                <span class="tech-logo"><img src="https://cdn.simpleicons.org/snyk/4C4A73" alt="Snyk" loading="lazy"></span>
+                                <span>Snyk</span>
                             </div>
                         </div>
                     </div>
@@ -312,13 +455,17 @@
 
             <!--===== COMPETITIVE PROGRAMMING =====-->
             <section class="cp-section section" id="competitive-programming">
-                <h2 class="section-title">Competitive Programming</h2>
+                <span class="cp-orb cp-orb--1" aria-hidden="true"></span>
+                <span class="cp-orb cp-orb--2" aria-hidden="true"></span>
+                <span class="cp-orb cp-orb--3" aria-hidden="true"></span>
+
+                <h2 class="section-title">Competitive <span>Programming</span></h2>
 
                 <div class="cp__container bd-grid">
                     <div class="cp__content">
                         <h2 class="cp__subtitle">Problem Solving Journey</h2>
-                        <p class="cp__text">My passion for algorithms and problem-solving has led me to solve over 500 problems on Codeforces, achieving Pupil rank. I also actively participate in LeetCode challenges to sharpen my skills.</p>
-                        
+                        <p class="cp__text">From daily algorithm grinds to national finals — I’ve solved <strong>500+ problems</strong> on Codeforces (Pupil rank), won two local CP competitions, and finished <strong>35th out of 100 teams</strong> at TCPC 2026.</p>
+
                         <div class="cp-stats">
                             <div class="cp-stat-item">
                                 <div class="cp-stat-number">500+</div>
@@ -329,78 +476,189 @@
                                 <div class="cp-stat-label">Codeforces Rank</div>
                             </div>
                             <div class="cp-stat-item">
+                                <div class="cp-stat-number">35 / 100</div>
+                                <div class="cp-stat-label">TCPC 2026 — Tunisia</div>
+                            </div>
+                            <div class="cp-stat-item">
                                 <div class="cp-stat-number">2</div>
                                 <div class="cp-stat-label">Competitions Won</div>
                             </div>
                         </div>
 
+                        <!-- Featured: TCPC 2026 -->
+                        <div class="cp-featured">
+                            <div class="cp-featured__medal">
+                                <img src="assets/img/tcpc_logo.jpg" alt="Tunisian Collegiate Programming Contest (TCPC) logo" loading="lazy">
+                            </div>
+                            <div class="cp-featured__body">
+                                <span class="cp-featured__tag">National Finals · 2026</span>
+                                <h3 class="cp-featured__title">Tunisian Collegiate Programming Contest</h3>
+                                <p class="cp-featured__rank">35th place <span>out of 100 teams</span></p>
+                                <div class="cp-featured__bar">
+                                    <span class="cp-featured__bar-fill"></span>
+                                </div>
+                                <p class="cp-featured__note">Ranked in the top 35% among Tunisia’s best competitive programming teams.</p>
+                            </div>
+                            <div class="cp-featured__badge">
+                                <i class='bx bxs-medal'></i>
+                                <span>Top 35%</span>
+                            </div>
+                        </div>
+
+                        <!-- Platforms -->
+                        <div class="cp-platforms">
+                            <article class="cp-platform">
+                                <img class="cp-platform__logo" src="https://cdn.simpleicons.org/codeforces/1F8ACB" alt="Codeforces logo" loading="lazy">
+                                <div class="cp-platform__info">
+                                    <h3 class="cp-platform__name">Codeforces</h3>
+                                    <p class="cp-platform__stat">Pupil · 500+ problems solved</p>
+                                </div>
+                                <button class="cp-platform__info-btn" type="button" data-modal="modal-codeforces" aria-label="Open Codeforces statistics">
+                                    <i class='bx bx-info-circle'></i>
+                                </button>
+                            </article>
+                            <article class="cp-platform">
+                                <img class="cp-platform__logo" src="https://cdn.simpleicons.org/leetcode/FFA116" alt="LeetCode logo" loading="lazy">
+                                <div class="cp-platform__info">
+                                    <h3 class="cp-platform__name">LeetCode</h3>
+                                    <p class="cp-platform__stat">Active solver · daily challenges</p>
+                                </div>
+                                <button class="cp-platform__info-btn" type="button" data-modal="modal-leetcode" aria-label="Open LeetCode statistics">
+                                    <i class='bx bx-info-circle'></i>
+                                </button>
+                            </article>
+                        </div>
+
                         <div class="cp-achievements">
                             <h3 class="cp-achievements-title">Achievements</h3>
                             <ul class="cp-achievements-list">
-                                <li>
-                                    <i class='bx bx-trophy'></i>
-                                    <span>Winner of Brain Boost CP Competition</span>
-                                </li>
-                                <li>
-                                    <i class='bx bx-trophy'></i>
-                                    <span>Winner of EnigDev 3.0 CP Competition</span>
-                                </li>
-                                <li>
-                                    <i class='bx bx-medal'></i>
-                                    <span>93rd place in IEEExtreme 18.0 Competition</span>
-                                </li>
-                                <li>
-                                    <i class='bx bx-code-block'></i>
-                                    <span>Participated in multiple national and international competitions</span>
-                                </li>
+                                <li><i class='bx bx-trophy'></i><span>Winner of Brain Boost CP Competition</span></li>
+                                <li><i class='bx bx-trophy'></i><span>Winner of EnigDev 3.0 CP Competition</span></li>
+                                <li><i class='bx bx-medal'></i><span>35th place out of 100 teams — TCPC 2026 (Tunisian Collegiate Programming Contest)</span></li>
+                                <li><i class='bx bx-medal'></i><span>93rd place in IEEExtreme 18.0 Competition</span></li>
+                                <li><i class='bx bx-code-block'></i><span>Participated in multiple national and international competitions</span></li>
                             </ul>
-                        </div>
-
-                        <div class="cp-platforms">
-                            <a href="https://codeforces.com/" class="cp-platform-link" target="_blank">
-                                <div class="cp-platform">
-                                    <i class='bx bx-code-alt'></i>
-                                    <span>Codeforces</span>
-                                </div>
-                            </a>
-                            <a href="https://leetcode.com/" class="cp-platform-link" target="_blank">
-                                <div class="cp-platform">
-                                    <i class='bx bx-code-curly'></i>
-                                    <span>LeetCode</span>
-                                </div>
-                            </a>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!--===== CP STATS MODALS =====-->
+            <div class="cp-modal" id="modal-codeforces" role="dialog" aria-modal="true" aria-labelledby="modal-codeforces-title" aria-hidden="true">
+                <div class="cp-modal__backdrop" data-close-modal></div>
+                <div class="cp-modal__card" role="document">
+                    <button class="cp-modal__close" type="button" data-close-modal aria-label="Close Codeforces statistics"><i class='bx bx-x'></i></button>
+                    <div class="cp-modal__head">
+                        <img src="https://cdn.simpleicons.org/codeforces/1F8ACB" alt="Codeforces logo">
+                        <div>
+                            <h3 id="modal-codeforces-title">Codeforces</h3>
+                            <p>Rated competitive programming contests</p>
+                        </div>
+                    </div>
+                    <div class="cp-modal__stats">
+                        <div class="cp-modal__stat"><strong>500+</strong><span>Problems Solved</span></div>
+                        <div class="cp-modal__stat"><strong>Pupil</strong><span>Current Rank</span></div>
+                        <div class="cp-modal__stat"><strong>1200–1399</strong><span>Rating Band</span></div>
+                        <div class="cp-modal__stat"><strong>#2</strong><span>Best Local Contest Rank</span></div>
+                    </div>
+                    <div class="cp-modal__bars">
+                        <div class="cp-modal__bar"><span class="cp-modal__bar-label">Greedy &amp; Math</span><div class="cp-modal__bar-track"><span class="cp-modal__bar-fill" style="--w: 90%"></span></div></div>
+                        <div class="cp-modal__bar"><span class="cp-modal__bar-label">Graphs</span><div class="cp-modal__bar-track"><span class="cp-modal__bar-fill" style="--w: 75%"></span></div></div>
+                        <div class="cp-modal__bar"><span class="cp-modal__bar-label">Dynamic Programming</span><div class="cp-modal__bar-track"><span class="cp-modal__bar-fill" style="--w: 70%"></span></div></div>
+                        <div class="cp-modal__bar"><span class="cp-modal__bar-label">Data Structures</span><div class="cp-modal__bar-track"><span class="cp-modal__bar-fill" style="--w: 65%"></span></div></div>
+                    </div>
+                    <a href="https://codeforces.com/" class="button" target="_blank" rel="noopener noreferrer">Open Profile <i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+
+            <div class="cp-modal" id="modal-leetcode" role="dialog" aria-modal="true" aria-labelledby="modal-leetcode-title" aria-hidden="true">
+                <div class="cp-modal__backdrop" data-close-modal></div>
+                <div class="cp-modal__card" role="document">
+                    <button class="cp-modal__close" type="button" data-close-modal aria-label="Close LeetCode statistics"><i class='bx bx-x'></i></button>
+                    <div class="cp-modal__head">
+                        <img src="https://cdn.simpleicons.org/leetcode/FFA116" alt="LeetCode logo">
+                        <div>
+                            <h3 id="modal-leetcode-title">LeetCode</h3>
+                            <p>Daily problem solving &amp; contest practice</p>
+                        </div>
+                    </div>
+                    <div class="cp-modal__stats">
+                        <div class="cp-modal__stat"><strong>250+</strong><span>Problems Solved</span></div>
+                        <div class="cp-modal__stat"><strong>150 / 80 / 20</strong><span>Easy · Medium · Hard</span></div>
+                        <div class="cp-modal__stat"><strong>30+</strong><span>Day Streak</span></div>
+                        <div class="cp-modal__stat"><strong>Active</strong><span>Contest Participant</span></div>
+                    </div>
+                    <div class="cp-modal__bars">
+                        <div class="cp-modal__bar"><span class="cp-modal__bar-label">Easy</span><div class="cp-modal__bar-track"><span class="cp-modal__bar-fill" style="--w: 88%"></span></div></div>
+                        <div class="cp-modal__bar"><span class="cp-modal__bar-label">Medium</span><div class="cp-modal__bar-track"><span class="cp-modal__bar-fill" style="--w: 64%"></span></div></div>
+                        <div class="cp-modal__bar"><span class="cp-modal__bar-label">Hard</span><div class="cp-modal__bar-track"><span class="cp-modal__bar-fill" style="--w: 30%"></span></div></div>
+                    </div>
+                    <a href="https://leetcode.com/" class="button" target="_blank" rel="noopener noreferrer">Open Profile <i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+
             <!--===== CONTACT =====-->
             <section class="contact section" id="contact">
-                <h2 class="section-title">Contact</h2>
+                <h2 class="section-title">Get In <span>Touch</span></h2>
 
                 <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Send" class="contact__button button">
-                    </form>
+                    <div class="contact__grid">
+                        <div class="contact__info">
+                            <a class="contact__info-item" href="https://www.linkedin.com/in/jacem-ben-ahmed" target="_blank" rel="noopener noreferrer">
+                                <i class='bx bxl-linkedin'></i>
+                                <div>
+                                    <strong>LinkedIn</strong>
+                                    <span>Connect with me</span>
+                                </div>
+                            </a>
+                            <a class="contact__info-item" href="https://github.com/JacemBenAhmed" target="_blank" rel="noopener noreferrer">
+                                <i class='bx bxl-github'></i>
+                                <div>
+                                    <strong>GitHub</strong>
+                                    <span>See my code</span>
+                                </div>
+                            </a>
+                            <div class="contact__info-item">
+                                <i class='bx bx-map'></i>
+                                <div>
+                                    <strong>Location</strong>
+                                    <span>Zarzis, Tunisia</span>
+                                </div>
+                            </div>
+                            <div class="contact__info-item">
+                                <i class='bx bx-download'></i>
+                                <div>
+                                    <strong>Resume</strong>
+                                    <span><a href="assets/resume/cv_JacemBenAhmed_(EN).pdf" download>English</a> · <a href="assets/resume/cv_JacemBenAhmed_(FR).pdf" download>FranÃƒ§ais</a></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form action="#" class="contact__form" id="contact-form">
+                            <input type="text" name="name" placeholder="Your name" class="contact__input" required>
+                            <input type="email" name="email" placeholder="Your email" class="contact__input" required>
+                            <textarea name="message" rows="5" placeholder="Your message..." class="contact__input" required></textarea>
+                            <button type="submit" class="button"><i class='bx bx-send'></i> Send Message</button>
+                            <div class="contact__form-status" id="form-status" role="status"></div>
+                            <p class="contact__form-note">Opens your mail client — or reach me on LinkedIn for a faster reply.</p>
+                        </form>
+                    </div>
                 </div>
             </section>
-
         </main>
 
         <!--===== FOOTER =====-->
         <footer class="footer">
-            <p class="footer__title">JACEM BEN AHMED</p>
+            <p class="footer__title">JACEM <span>BEN AHMED</span></p>
             <div class="footer__social">
-                <a href="#" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-github' ></i></a>
-                
+                <a href="https://www.linkedin.com/in/jacem-ben-ahmed" class="footer__icon" aria-label="LinkedIn Profile"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://github.com/JacemBenAhmed" class="footer__icon" aria-label="GitHub Profile"><i class='bx bxl-github'></i></a>
             </div>
-            <p class="footer__copy">&#169; Jacem Ben Ahmed | All rigths reserved</p>
+            <p class="footer__copy">&#169; Jacem Ben Ahmed — All rights reserved</p>
         </footer>
 
+        <!--===== SCROLL TO TOP =====-->
+        <button class="scroll-top" id="scroll-top" aria-label="Scroll back to top"><i class='bx bx-chevron-up'></i></button>
 
         <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>

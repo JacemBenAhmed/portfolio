@@ -3,96 +3,178 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="CI/CD Pipeline Automation with Jenkins, Ansible, Docker and Kubernetes.">
+
         <link rel="stylesheet" href="../assets/css/styles.css">
+        <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+
+        <script>
+            (function () {
+                try {
+                    var storedTheme = localStorage.getItem('portfolio-theme');
+                    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    var initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+                    document.documentElement.setAttribute('data-theme', initialTheme);
+                    document.documentElement.style.colorScheme = initialTheme;
+                } catch (error) {}
+            }());
+        </script>
+
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
         <title>CI/CD Pipeline Automation | Jacem</title>
+        <style>
+          .pj-hero { background: linear-gradient(135deg, rgba(109,40,217,0.08), rgba(139,92,246,0.08)); border: 1px solid rgba(109,40,217,0.12); border-radius: var(--border-radius-lg); box-shadow: 0 8px 24px rgba(17,24,39,0.08); padding: 2rem; overflow: hidden; position: relative; }
+          .pj-hero h1 { font-size: 2rem; color: var(--text-color); margin-bottom: 0.5rem; }
+          .pj-hero > p { color: var(--text-light); line-height: 1.8; max-width: 900px; }
+          .pj-badges { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem; }
+          .pj-badge { background: rgba(124, 58, 237, 0.09); color: var(--first-color); padding:.35rem .65rem; border-radius: 999px; font-weight: var(--font-semi); font-size:.85rem; }
+
+          .pj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+          .pj-card { background: var(--surface-solid); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1.5rem; box-shadow: 0 8px 20px rgba(17,24,39,0.08); }
+          .pj-card i { font-size: 2rem; color: var(--first-color); margin-bottom: .75rem; display: inline-block; }
+          .pj-card h3 { font-size: 1.05rem; color: var(--text-color); margin-bottom: .5rem; }
+          .pj-card p { color: var(--text-light); line-height: 1.7; font-size: .95rem; }
+
+          .pj-section { margin-top: 2rem; }
+          .pj-section h2 { color: var(--first-color); font-weight: var(--font-bold); font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
+          .pj-list { display: grid; gap: .75rem; }
+          .pj-list li { display: flex; align-items: flex-start; gap: .7rem; color: var(--text-light); line-height: 1.7; }
+          .pj-list li i { color: var(--first-color); font-size: 1.15rem; margin-top: .15rem; }
+
+          .pj-tech { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
+          .pj-tech span { background: rgba(124, 58, 237, 0.09); color: var(--first-color); padding: .5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi); }
+        </style>
     </head>
     <body>
-        <header class="l-header">
+        <!--===== SCROLL PROGRESS =====-->
+        <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+        <!--===== ANIMATED BACKGROUND =====-->
+        <div class="bg-scene" aria-hidden="true">
+            <span class="bg-orb bg-orb--1"></span>
+            <span class="bg-orb bg-orb--2"></span>
+            <span class="bg-orb bg-orb--3"></span>
+            <span class="bg-orb bg-orb--4"></span>
+            <canvas id="particles-canvas"></canvas>
+        </div>
+        <header class="l-header" id="header">
             <nav class="nav bd-grid">
                 <div>
-                    <a href="../index.html" class="nav__logo">Jacem</a>
+                    <a href="../index.html" class="nav__logo" aria-label="Jacem Ben Ahmed — Home">
+                        Jacem <span>Ben Ahmed</span>
+                    </a>
                 </div>
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item"><a href="../index.html" class="nav__link">Home</a></li>
                         <li class="nav__item"><a href="../about.html" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="../skills.html" class="nav__link">Skills</a></li>
+                        <li class="nav__item"><a href="../index.html#skills" class="nav__link">Skills</a></li>
                         <li class="nav__item"><a href="../projects.html" class="nav__link">Projects</a></li>
                         <li class="nav__item"><a href="../contact.html" class="nav__link">Contact</a></li>
                     </ul>
                 </div>
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
+                <div class="nav__actions">
+                    <button class="nav__theme" id="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+                        <i class='bx bx-moon'></i>
+                    </button>
+                    <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Open menu">
+                        <i class='bx bx-menu'></i>
+                    </div>
                 </div>
             </nav>
         </header>
         <main class="l-main">
             <section class="section" id="project">
-                <h2 class="section-title">CI/CD Pipeline Automation</h2>
+                <h2 class="section-title">CI/CD <span>Pipeline Automation</span></h2>
                 <div class="bd-grid">
-                    <div style="background: var(--bg-color); padding: 2rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
-                        <div style="text-align: center; margin-bottom: 2rem;">
-                            <div style="width: 100%; height: 300px; background: linear-gradient(135deg, var(--first-color), var(--first-color-alt)); border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; margin-bottom: 2rem;">
-                                <i class='bx bx-cog'></i>
-                            </div>
-                        </div>
-                        
-                        <h3 style="color: var(--first-color); font-weight: var(--font-bold); margin-bottom: 1rem;">Project Overview</h3>
-                        <p style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-light);">
-                            Implemented comprehensive CI/CD pipelines using Jenkins and Ansible for automated deployment of containerized applications. 
-                            The solution includes Kubernetes orchestration, automated testing, and monitoring for improved reliability and efficiency.
+                    <div class="pj-hero">
+                        <h1>Automated deployment with Jenkins &amp; Ansible</h1>
+                        <p>
+                            I implemented CI/CD pipelines that take containerized applications from commit to production with minimal
+                            human intervention. Using Jenkins for orchestration, Ansible for configuration management, and
+                            Docker/Kubernetes for deployment, the solution adds automated testing and monitoring as built-in quality gates.
                         </p>
+                        <div class="pj-badges">
+                            <span class="pj-badge">CI/CD</span>
+                            <span class="pj-badge">Infrastructure as Code</span>
+                            <span class="pj-badge">Container orchestration</span>
+                            <span class="pj-badge">Quality gates</span>
+                        </div>
+                    </div>
 
-                        <h3 style="color: var(--first-color); font-weight: var(--font-bold); margin-bottom: 1rem;">Key Features</h3>
-                        <ul style="margin-bottom: 2rem; padding-left: 1.5rem; line-height: 1.8;">
-                            <li>Automated CI/CD pipelines with Jenkins</li>
-                            <li>Configuration management with Ansible</li>
-                            <li>Docker containerization and orchestration</li>
-                            <li>Kubernetes deployment automation</li>
-                            <li>Automated testing and quality gates</li>
-                            <li>Monitoring and alerting integration</li>
+                    <div class="pj-grid">
+                        <div class="pj-card">
+                            <i class='bx bx-git-branch'></i>
+                            <h3>Jenkins pipelines</h3>
+                            <p>Declarative pipelines build, test, and promote artifacts automatically on every push.</p>
+                        </div>
+                        <div class="pj-card">
+                            <i class='bx bx-server'></i>
+                            <h3>Ansible automation</h3>
+                            <p>Configuration management keeps environments consistent and reproducible across stages.</p>
+                        </div>
+                        <div class="pj-card">
+                            <i class='bx bxl-docker'></i>
+                            <h3>Docker &amp; Kubernetes</h3>
+                            <p>Applications ship as containers and are orchestrated for resilience and easy scaling.</p>
+                        </div>
+                        <div class="pj-card">
+                            <i class='bx bx-line-chart'></i>
+                            <h3>Testing &amp; monitoring</h3>
+                            <p>Automated tests and quality gates block bad releases, with monitoring for early issue detection.</p>
+                        </div>
+                    </div>
+
+                    <div class="pj-section">
+                        <h2><i class='bx bx-list-check'></i> Key Features</h2>
+                        <ul class="pj-list">
+                            <li><i class='bx bx-check-circle'></i> Automated CI/CD pipelines with Jenkins</li>
+                            <li><i class='bx bx-check-circle'></i> Configuration management with Ansible</li>
+                            <li><i class='bx bx-check-circle'></i> Docker containerization and orchestration</li>
+                            <li><i class='bx bx-check-circle'></i> Kubernetes deployment automation</li>
+                            <li><i class='bx bx-check-circle'></i> Automated testing and quality gates</li>
+                            <li><i class='bx bx-check-circle'></i> Monitoring and alerting integration</li>
                         </ul>
+                    </div>
 
-                        <h3 style="color: var(--first-color); font-weight: var(--font-bold); margin-bottom: 1rem;">Technologies Used</h3>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;">
-                            <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">Jenkins</span>
-                            <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">Ansible</span>
-                            <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">Docker</span>
-                            <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">Kubernetes</span>
-                            <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">Shell Scripting</span>
-                            <span style="background: var(--third-color); color: var(--first-color); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); font-weight: var(--font-semi);">Postgres</span>
+                    <div class="pj-section">
+                        <h2><i class='bx bx-code-alt'></i> Technologies Used</h2>
+                        <div class="pj-tech">
+                            <span>Jenkins</span>
+                            <span>Ansible</span>
+                            <span>Docker</span>
+                            <span>Kubernetes</span>
+                            <span>Shell Scripting</span>
+                            <span>Postgres</span>
                         </div>
+                    </div>
 
-                        <h3 style="color: var(--first-color); font-weight: var(--font-bold); margin-bottom: 1rem;">Project Impact</h3>
-                        <p style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-light);">
-                            The automated CI/CD pipeline reduced deployment time by 80% and eliminated manual deployment errors. 
-                            The solution improved system reliability and enabled faster feature delivery cycles for development teams.
-                        </p>
+                    <div class="pj-section">
+                        <h2><i class='bx bx-line-chart'></i> Project Impact</h2>
+                        <ul class="pj-list">
+                            <li><i class='bx bx-check-circle'></i> Reduced deployment time by 80% and eliminated manual deployment errors.</li>
+                            <li><i class='bx bx-check-circle'></i> Improved system reliability with automated quality gates.</li>
+                            <li><i class='bx bx-check-circle'></i> Enabled faster feature delivery cycles for development teams.</li>
+                        </ul>
+                    </div>
 
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <a href="../projects.html" class="button" style="margin-right: 1rem;">Back to Projects</a>
-                            <a href="../index.html" class="button">Back to Home</a>
-                        </div>
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <a href="../projects.html" class="button" style="margin-right: 1rem;">Back to Projects</a>
+                        <a href="../index.html" class="button button--outline">Back to Home</a>
                     </div>
                 </div>
             </section>
         </main>
         <footer class="footer">
-            <p class="footer__title">Jacem</p>
+            <p class="footer__title">JACEM <span>BEN AHMED</span></p>
             <div class="footer__social">
-                <a href="#" class="footer__icon"><i class='bx bxl-linkedin' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-github' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+                <a href="https://www.linkedin.com/in/jacem-ben-ahmed" class="footer__icon" aria-label="LinkedIn Profile"><i class='bx bxl-linkedin' ></i></a>
+                <a href="https://github.com/JacemBenAhmed" class="footer__icon" aria-label="GitHub Profile"><i class='bx bxl-github' ></i></a>
             </div>
-            <p class="footer__copy">© Jacem Ben Ahmed. All rights reserved.</p>
+            <p class="footer__copy">&#169; Jacem Ben Ahmed — All rights reserved</p>
         </footer>
+        <button class="scroll-top" id="scroll-top" aria-label="Scroll back to top"><i class='bx bx-chevron-up'></i></button>
         <script src="https://unpkg.com/scrollreveal"></script>
         <script src="../assets/js/main.js"></script>
     </body>
-    </html>
-
-
-
-
-
+</html>
