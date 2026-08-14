@@ -57,25 +57,6 @@ function initTheme() {
   }
 }
 
-/*===== RESUME DROPDOWN =====*/
-function toggleDropdown(button) {
-  document.querySelectorAll('.resume-dropdown-content').forEach(dropdown => {
-    dropdown.classList.remove('show');
-  });
-  const dropdown = button.nextElementSibling;
-  if (dropdown) {
-    dropdown.classList.toggle('show');
-  }
-}
-
-document.addEventListener('click', event => {
-  if (!event.target.closest('.resume-btn')) {
-    document.querySelectorAll('.resume-dropdown-content').forEach(dropdown => {
-      dropdown.classList.remove('show');
-    });
-  }
-});
-
 /*===== BUTTON RIPPLE =====*/
 function attachRipple(container) {
   container.querySelectorAll('.button').forEach(button => {
