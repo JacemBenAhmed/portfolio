@@ -2,131 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Contact Jacem BEN AHMED — Software Engineer. Reach out via email, LinkedIn or GitHub.">
-
-        <link rel="stylesheet" href="assets/css/styles.css">
-        <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-
-        <script>
-            (function () {
-                try {
-                    var storedTheme = localStorage.getItem('portfolio-theme');
-                    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    var initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
-                    document.documentElement.setAttribute('data-theme', initialTheme);
-                    document.documentElement.style.colorScheme = initialTheme;
-                } catch (error) {}
-            }());
-        </script>
-
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-
-        <title>Contact | Jacem BEN AHMED</title>
+        <title>Redirecting… | Jacem Ben Ahmed</title>
+        <meta name="robots" content="noindex">
+        <link rel="canonical" href="https://jacem.vercel.app/#contact">
+        <meta http-equiv="refresh" content="0; url=index.html#contact">
+        <script>location.replace('index.html#contact');</script>
     </head>
     <body>
-        <!--===== SCROLL PROGRESS =====-->
-        <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-
-        <!--===== ANIMATED BACKGROUND =====-->
-        <div class="bg-scene" aria-hidden="true">
-            <span class="bg-orb bg-orb--1"></span>
-            <span class="bg-orb bg-orb--2"></span>
-            <span class="bg-orb bg-orb--3"></span>
-            <span class="bg-orb bg-orb--4"></span>
-            <canvas id="particles-canvas"></canvas>
-        </div>
-        <header class="l-header" id="header">
-            <nav class="nav bd-grid">
-                <div>
-                    <a href="index.html" class="nav__logo" aria-label="Jacem Ben Ahmed — Home">
-                        Jacem <span>Ben Ahmed</span>
-                    </a>
-                </div>
-
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-                        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="index.html#skills" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
-                        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="nav__actions">
-                    <button class="nav__theme" id="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
-                        <i class='bx bx-moon'></i>
-                    </button>
-                    <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Open menu">
-                        <i class='bx bx-menu'></i>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <main class="l-main">
-            <section class="contact section" id="contact">
-                <h2 class="section-title">Get In <span>Touch</span></h2>
-
-                <div class="contact__container bd-grid">
-                    <div class="contact__grid">
-                        <div class="contact__info">
-                            <a class="contact__info-item" href="https://www.linkedin.com/in/jacem-ben-ahmed" target="_blank" rel="noopener noreferrer">
-                                <i class='bx bxl-linkedin'></i>
-                                <div>
-                                    <strong>LinkedIn</strong>
-                                    <span>Connect with me</span>
-                                </div>
-                            </a>
-                            <a class="contact__info-item" href="https://github.com/JacemBenAhmed" target="_blank" rel="noopener noreferrer">
-                                <i class='bx bxl-github'></i>
-                                <div>
-                                    <strong>GitHub</strong>
-                                    <span>See my code</span>
-                                </div>
-                            </a>
-                            <div class="contact__info-item">
-                                <i class='bx bx-map'></i>
-                                <div>
-                                    <strong>Location</strong>
-                                    <span>Zarzis, Tunisia</span>
-                                </div>
-                            </div>
-                            <div class="contact__info-item">
-                                <i class='bx bx-download'></i>
-                                <div>
-                                    <strong>Resume</strong>
-                                    <span><a href="assets/resume/cv_JacemBenAhmed_(EN).pdf" download>English</a></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <form action="#" class="contact__form" id="contact-form">
-                            <input type="text" name="name" placeholder="Your name" class="contact__input" required>
-                            <input type="email" name="email" placeholder="Your email" class="contact__input" required>
-                            <textarea name="message" rows="5" placeholder="Your message..." class="contact__input" required></textarea>
-                            <button type="submit" class="button"><i class='bx bx-send'></i> Send Message</button>
-                            <div class="contact__form-status" id="form-status" role="status"></div>
-                            <p class="contact__form-note">Opens your mail client — or reach me on LinkedIn for a faster reply.</p>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <p class="footer__title">JACEM <span>BEN AHMED</span></p>
-            <div class="footer__social">
-                <a href="https://www.linkedin.com/in/jacem-ben-ahmed" class="footer__icon" aria-label="LinkedIn Profile"><i class='bx bxl-linkedin'></i></a>
-                <a href="https://github.com/JacemBenAhmed" class="footer__icon" aria-label="GitHub Profile"><i class='bx bxl-github'></i></a>
-            </div>
-            <p class="footer__copy">&#169; Jacem Ben Ahmed — All rights reserved</p>
-        </footer>
-
-        <button class="scroll-top" id="scroll-top" aria-label="Scroll back to top"><i class='bx bx-chevron-up'></i></button>
-
-        <script src="https://unpkg.com/scrollreveal"></script>
-        <script src="assets/js/main.js"></script>
+        <p>This page moved to <a href="index.html#contact">the home page</a>.</p>
     </body>
 </html>

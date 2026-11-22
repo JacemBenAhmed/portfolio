@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edity — Collaborative document editor with an AI agent | Jacem Ben Ahmed</title>
+        <meta name="description" content="Edity: a real-time collaborative document editor with an AI agent that proposes edits you accept or reject. Built with ASP.NET Core (Clean Architecture), Vue.js, SignalR and Capacitor.">
+        <meta name="theme-color" content="#09090b">
+        <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+
+        <script>
+            (function () {
+                var d = document.documentElement;
+                d.classList.add('js');
+                try {
+                    var t = localStorage.getItem('portfolio-theme');
+                    if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                    d.setAttribute('data-theme', t);
+                    d.style.colorScheme = t;
+                } catch (e) { d.setAttribute('data-theme', 'dark'); }
+            }());
+        </script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/site.css">
+    </head>
+    <body>
+        <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+        <a class="skip-link" href="#main">Skip to content</a>
+        <header class="topbar" id="topbar">
+            <div class="wrap topbar__in">
+                <a class="brand" href="../index.html" aria-label="Jacem Ben Ahmed — home"><span class="brand__mark">J</span><span class="brand__name">Jacem Ben Ahmed</span></a>
+                <nav class="topnav" id="topnav" aria-label="Primary">
+                    <a href="../index.html#experience">Experience</a>
+                    <a href="../projects.html" class="is-active">Projects</a>
+                    <a href="../index.html#skills">Skills</a>
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#contact">Contact</a>
+                </nav>
+                <div class="topbar__actions">
+                    <button class="kbar-trigger" type="button" data-cmdk aria-label="Open command menu"><i class='bx bx-search'></i><span>Search…</span><kbd data-kbd-mod>Ctrl K</kbd></button>
+                    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle theme"><i class='bx bx-moon'></i></button>
+                    <button class="icon-btn topbar__menu" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="topnav"><i class='bx bx-menu'></i></button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content is generated from assets/js/data.js (project id: "edity").
+             Edit the text, add screenshots (gallery) and the logo there. -->
+        <main id="main" class="page">
+            <div id="case" data-project="edity">
+                <noscript><div class="wrap" style="padding:80px 0"><h1>Edity — Collaborative document editor with an AI agent</h1><p>Edity: a real-time collaborative document editor with an AI agent that proposes edits you accept or reject. Built with ASP.NET Core (Clean Architecture), Vue.js, SignalR and Capacitor.</p></div></noscript>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="wrap site-footer__in">
+                <span>© <span id="year">2026</span> Jacem Ben Ahmed</span>
+                <span>Press <kbd data-kbd-mod>Ctrl K</kbd> to navigate · <kbd>/</kbd> to search</span>
+                <nav aria-label="Footer">
+                    <a href="../projects.html">All projects</a>
+                    <a href="https://github.com/JacemBenAhmed" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="../index.html#contact">Contact</a>
+                </nav>
+            </div>
+        </footer>
+
+        <script src="../assets/js/data.js"></script>
+        <script src="../assets/js/main.js"></script>
+    </body>
+</html>

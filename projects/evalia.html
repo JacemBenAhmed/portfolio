@@ -7,7 +7,11 @@
 
         <link rel="stylesheet" href="../assets/css/styles.css">
         <link rel="stylesheet" href="../assets/css/evalia.css">
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="../assets/css/site.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 
         <script>
@@ -24,46 +28,31 @@
 
         <title>Evalia — AI Assessment Platform | Jacem</title>
     </head>
-    <body class="ev-page">
+    <body class="ev-page legacy">
         <!--===== SCROLL PROGRESS =====-->
         <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
-        <!--===== ANIMATED BACKGROUND =====-->
-        <div class="bg-scene" aria-hidden="true">
-            <span class="bg-orb bg-orb--1"></span>
-            <span class="bg-orb bg-orb--2"></span>
-            <span class="bg-orb bg-orb--3"></span>
-            <span class="bg-orb bg-orb--4"></span>
-            <canvas id="particles-canvas"></canvas>
-        </div>
-
         <!--===== HEADER =====-->
-        <header class="l-header" id="header">
-            <nav class="nav bd-grid">
-                <div>
-                    <a href="../index.html" class="nav__logo" aria-label="Jacem Ben Ahmed — Home">Jacem <span>Ben Ahmed</span></a>
+        <a class="skip-link" href="#main">Skip to content</a>
+        <header class="topbar" id="topbar">
+            <div class="wrap topbar__in">
+                <a class="brand" href="../index.html" aria-label="Jacem Ben Ahmed — home"><span class="brand__mark">J</span><span class="brand__name">Jacem Ben Ahmed</span></a>
+                <nav class="topnav" id="topnav" aria-label="Primary">
+                    <a href="../index.html#experience">Experience</a>
+                    <a href="../projects.html" class="is-active">Projects</a>
+                    <a href="../index.html#skills">Skills</a>
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#contact">Contact</a>
+                </nav>
+                <div class="topbar__actions">
+                    <button class="kbar-trigger" type="button" data-cmdk aria-label="Open command menu"><i class='bx bx-search'></i><span>Search…</span><kbd data-kbd-mod>Ctrl K</kbd></button>
+                    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle theme"><i class='bx bx-moon'></i></button>
+                    <button class="icon-btn topbar__menu" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="topnav"><i class='bx bx-menu'></i></button>
                 </div>
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="../index.html" class="nav__link">Home</a></li>
-                        <li class="nav__item"><a href="../about.html" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="../index.html#skills" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="../projects.html" class="nav__link">Projects</a></li>
-                        <li class="nav__item"><a href="../contact.html" class="nav__link">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="nav__actions">
-                    <button class="nav__theme" id="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
-                        <i class='bx bx-moon'></i>
-                    </button>
-                    <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Open menu">
-                        <i class='bx bx-menu'></i>
-                    </div>
-                </div>
-            </nav>
+            </div>
         </header>
 
-        <main class="l-main">
+        <main class="l-main" id="main">
 
             <!--===== HERO =====-->
             <section class="ev-hero ev-container" id="hero">
@@ -736,17 +725,19 @@
         </main>
 
         <!--===== FOOTER =====-->
-        <footer class="footer">
-            <p class="footer__title">JACEM <span>BEN AHMED</span></p>
-            <div class="footer__social">
-                <a href="https://www.linkedin.com/in/jacem-ben-ahmed" class="footer__icon" aria-label="LinkedIn Profile"><i class='bx bxl-linkedin'></i></a>
-                <a href="https://github.com/JacemBenAhmed" class="footer__icon" aria-label="GitHub Profile"><i class='bx bxl-github'></i></a>
+        <footer class="site-footer">
+            <div class="wrap site-footer__in">
+                <span>© <span id="year">2026</span> Jacem Ben Ahmed</span>
+                <span>Press <kbd data-kbd-mod>Ctrl K</kbd> to navigate · <kbd>/</kbd> to search</span>
+                <nav aria-label="Footer">
+                    <a href="../projects.html">All projects</a>
+                    <a href="https://github.com/JacemBenAhmed" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="../index.html#contact">Contact</a>
+                </nav>
             </div>
-            <p class="footer__copy">&#169; Jacem Ben Ahmed — All rights reserved</p>
         </footer>
 
         <!--===== SCROLL TO TOP =====-->
-        <button class="scroll-top" id="scroll-top" aria-label="Scroll back to top"><i class='bx bx-chevron-up'></i></button>
 
         <!--===== LIGHTBOX =====-->
         <div class="ev-lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
@@ -756,8 +747,7 @@
             <button class="ev-lb__btn ev-lb__next" id="lb-next" type="button" aria-label="Next image"><i class='bx bx-chevron-right'></i></button>
             <p class="ev-lb__cap" id="lb-cap"></p>
         </div>
-
-        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="../assets/js/data.js"></script>
         <script src="../assets/js/main.js"></script>
         <script>
         (function () {
